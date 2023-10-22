@@ -1,0 +1,141 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sub_title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://title.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.94902, 0.372549, 0.14902, 1 )
+
+[node name="Settings" type="Control"]
+
+[node name="bg" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="title" type="Label" parent="."]
+margin_left = 285.0
+margin_top = 39.0
+margin_right = 683.0
+margin_bottom = 100.0
+theme = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "설정하기"
+align = 1
+valign = 1
+
+[node name="defensive_character" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_top = 111.0
+margin_right = 490.0
+margin_bottom = 303.0
+rect_pivot_offset = Vector2( -207, -18 )
+custom_constants/separation = 9
+
+[node name="label" type="Label" parent="defensive_character"]
+margin_right = 450.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "수비 캐릭터 배치하기"
+
+[node name="edit" type="TextEdit" parent="defensive_character"]
+margin_top = 42.0
+margin_right = 450.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 450, 150 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="attack_character" type="VBoxContainer" parent="."]
+margin_left = 520.0
+margin_top = 111.0
+margin_right = 970.0
+margin_bottom = 303.0
+rect_pivot_offset = Vector2( -207, -18 )
+custom_constants/separation = 9
+
+[node name="label" type="Label" parent="attack_character"]
+margin_right = 450.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "공격 캐릭터 배치하기"
+
+[node name="edit" type="TextEdit" parent="attack_character"]
+margin_top = 42.0
+margin_right = 450.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 450, 150 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="defensive_command" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_top = 325.0
+margin_right = 490.0
+margin_bottom = 517.0
+rect_pivot_offset = Vector2( -207, -18 )
+custom_constants/separation = 9
+
+[node name="label" type="Label" parent="defensive_command"]
+margin_right = 450.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "수비 기보 입력하기"
+
+[node name="edit" type="TextEdit" parent="defensive_command"]
+margin_top = 42.0
+margin_right = 450.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 450, 150 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="attack_command" type="VBoxContainer" parent="."]
+margin_left = 520.0
+margin_top = 325.0
+margin_right = 970.0
+margin_bottom = 517.0
+rect_pivot_offset = Vector2( -207, -18 )
+custom_constants/separation = 9
+
+[node name="label" type="Label" parent="attack_command"]
+margin_right = 450.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "공격 기보 입력하기"
+
+[node name="edit" type="TextEdit" parent="attack_command"]
+margin_top = 42.0
+margin_right = 450.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 450, 150 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="game_start" type="Button" parent="."]
+margin_left = 691.0
+margin_top = 526.0
+margin_right = 970.0
+margin_bottom = 582.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "게임 실행하기"
