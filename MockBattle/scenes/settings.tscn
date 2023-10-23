@@ -152,3 +152,4 @@ text = "게임 실행하기"
 [connection signal="text_changed" from="attack_character/edit" to="attack_character/edit" method="_on_edit_text_changed_attack_batch"]
 [connection signal="text_changed" from="defensive_command/edit" to="defensive_command/edit" method="_on_edit_text_changed_defense_command"]
 [connection signal="text_changed" from="attack_command/edit" to="attack_command/edit" method="_on_edit_text_changed_attack_command"]
+[connection signal="pressed" from="game_start" to="." method="_on_game_start_pressed"]
