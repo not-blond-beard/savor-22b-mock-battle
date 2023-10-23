@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sub_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/settings.gd" type="Script" id=3]
+[ext_resource path="res://scenes/text_edit.gd" type="Script" id=4]
+[ext_resource path="res://label.tres" type="DynamicFont" id=5]
 
 [sub_resource type="Theme" id=1]
 
@@ -17,6 +20,7 @@ border_color = Color( 0, 0, 0, 1 )
 bg_color = Color( 0.94902, 0.372549, 0.14902, 1 )
 
 [node name="Settings" type="Control"]
+script = ExtResource( 3 )
 
 [node name="bg" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -55,8 +59,9 @@ margin_right = 450.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 450, 150 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
+script = ExtResource( 4 )
 
 [node name="attack_character" type="VBoxContainer" parent="."]
 margin_left = 520.0
@@ -79,8 +84,9 @@ margin_right = 450.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 450, 150 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
+script = ExtResource( 4 )
 
 [node name="defensive_command" type="VBoxContainer" parent="."]
 margin_left = 40.0
@@ -103,8 +109,9 @@ margin_right = 450.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 450, 150 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
+script = ExtResource( 4 )
 
 [node name="attack_command" type="VBoxContainer" parent="."]
 margin_left = 520.0
@@ -127,8 +134,9 @@ margin_right = 450.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 450, 150 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
+script = ExtResource( 4 )
 
 [node name="game_start" type="Button" parent="."]
 margin_left = 691.0
@@ -139,3 +147,8 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 3 )
 text = "게임 실행하기"
+
+[connection signal="text_changed" from="defensive_character/edit" to="defensive_character/edit" method="_on_edit_text_changed_defense_batch"]
+[connection signal="text_changed" from="attack_character/edit" to="attack_character/edit" method="_on_edit_text_changed_attack_batch"]
+[connection signal="text_changed" from="defensive_command/edit" to="defensive_command/edit" method="_on_edit_text_changed_defense_command"]
+[connection signal="text_changed" from="attack_command/edit" to="attack_command/edit" method="_on_edit_text_changed_attack_command"]
