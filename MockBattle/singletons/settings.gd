@@ -20,12 +20,11 @@ func get_command_settings() -> Dictionary:
 func update_defense_batch_settings(setting: String):
 	batch_settings.defense = setting
 	
-
 func update_attack_batch_settings(setting: String):
 	batch_settings.attack = setting
 
 func update_defense_command_settings(setting: String):
-	batch_settings.defense = setting
+	command_settings.defense = setting
 
 func update_attack_command_settings(setting: String):
-	batch_settings.attack = setting
+	command_settings.attack = setting
