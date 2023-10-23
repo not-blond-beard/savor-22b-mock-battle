@@ -13,6 +13,10 @@ config_version=4
 config/name="Mock Battle"
 config/icon="res://icon.png"
 
+[autoload]
+
+Settings="*res://singletons/settings.gd"
+
 [display]
 
 window/stretch/mode="viewport"
