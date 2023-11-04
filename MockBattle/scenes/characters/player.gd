@@ -49,3 +49,29 @@ func skill_1(instance_map):
 	
 func skill_2(instance_map):
 	pass
+
+func get_is_enemy(target):
+	return target.get_team() != self.get_team()
+		
+func get_enemies_at_selected_area(area: int, instance_map):
+	var target_list = []
+	
+	for key in instance_map:
+		var instance = instance_map[key]
+		var food = instance.instance_node
+		
+		if get_is_enemy(food) and area == instance.area:
+			target_list.append(food)
+		
+	return target_list
+
+func get_all_enemies(instance_map):
+	var enemies = []
+	
+	for key in instance_map:
+		var instance = instance_map[key]
+		var food = instance.instance_node
+		
+		enemies.append(food)
+		
+	return enemies

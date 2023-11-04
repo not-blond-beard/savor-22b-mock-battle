@@ -10,9 +10,6 @@ func _ready():
 	evasion = 0
 	critical_chance = 0
 	
-func get_is_enemy(target: Player):
-	return target.get_team() != self.get_team()
-	
 func get_most_unheath_food(instance_map):
 	var target: Player = null
 	
@@ -24,18 +21,6 @@ func get_most_unheath_food(instance_map):
 			target = food
 			
 	return target
-	
-func get_enemies_at_selected_area(area: int, instance_map):
-	var target_list = []
-	
-	for key in instance_map:
-		var instance = instance_map[key]
-		var food: Player = instance.instance_node
-		
-		if get_is_enemy(food) and area == instance.area:
-			target_list.append(food)
-		
-	return target_list
 	
 		
 func skill_1(instance_map):
