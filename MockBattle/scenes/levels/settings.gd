@@ -1,7 +1,7 @@
 extends Control
 
 func _on_game_start_pressed():
-	 get_tree().change_scene("res://scenes/battle.tscn")
+	 get_tree().change_scene("res://scenes/levels/battle.tscn")
 
 func _ready():
 	var batch_settings = Settings.get_batch_setting()

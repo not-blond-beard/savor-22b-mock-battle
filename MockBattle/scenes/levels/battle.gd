@@ -9,7 +9,7 @@ const Player = preload("res://scenes/characters/player.gd")
 var instance_map = {}
 
 func _on_change_scene_pressed():
-	 return get_tree().change_scene("res://scenes/settings.tscn")
+	 return get_tree().change_scene("res://scenes/levels/settings.tscn")
 
 func _ready():
 	batch_characters_at_areas()
