@@ -15,6 +15,8 @@ func _ready():
 	batch_characters_at_areas()
 	activate_command(Settings.command_result_list)
 	
+	var code = get_winner_team_code()
+	
 func activate_skill(id, food: Player, skill_id: int):
 	match skill_id:
 		1:
@@ -33,7 +35,6 @@ func activate_command(commands):
 		
 		activate_skill(str(command.id), food, command.skill_id)
 		
-	
 func batch_characters_at_areas():
 	var defnse_front_area = $defense_area/front/container
 	var defnse_center_area = $defense_area/center/container
@@ -43,8 +44,8 @@ func batch_characters_at_areas():
 	var attack_center_area = $attack_area/center/container
 	var attack_back_area = $attack_area/back/container
 	
-	batch_characters_at_area(0, [defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_character_position)
-	batch_characters_at_area(1, [attack_front_area, attack_center_area, attack_back_area], Settings.attack_character_position)
+	batch_characters_at_area(Settings.DEFENSE_TEAM_CODE, [defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_character_position)
+	batch_characters_at_area(Settings.ATTACK_TEAM_CODE, [attack_front_area, attack_center_area, attack_back_area], Settings.attack_character_position)
 	
 func get_food_instance(type):
 	match type:
@@ -73,3 +74,29 @@ func batch_characters_at_area(team: int, areas: Array, batchs: Array):
 			
 			food.set_team(team)
 			area.add_child(food)
+
+func get_winner_team_code() -> int:
+	var defense_team_total_health: int = 0 
+	var attack_team_total_healath: int = 0
+	
+	for key in instance_map:
+		var food: Player = instance_map[key].instance_node
+		
+		if food.get_team() == Settings.DEFENSE_TEAM_CODE:
+			defense_team_total_health += food.get_health()
+		else: 
+			attack_team_total_healath += food.get_health()
+			
+	if defense_team_total_health > attack_team_total_healath:
+		return Settings.DEFENSE_TEAM_CODE
+	elif defense_team_total_health < attack_team_total_healath:
+		return Settings.ATTACK_TEAM_CODE
+	else:
+		return 0
+
+
+
+
+
+
+
