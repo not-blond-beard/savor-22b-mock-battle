@@ -112,6 +112,7 @@ offset_bottom = 452.0
 theme_override_constants/separation = 160
 
 [node name="winner_alert" parent="." instance=ExtResource("3_cvldv")]
+visible = false
 offset_left = 169.0
 offset_top = 162.0
 offset_right = 869.0
