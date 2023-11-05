@@ -9,7 +9,7 @@ const Player = preload("res://scenes/characters/player.gd")
 var instance_map = {}
 
 func _on_change_scene_pressed():
-	 return get_tree().change_scene("res://scenes/levels/settings.tscn")
+	return get_tree().change_scene_to_file("res://scenes/levels/settings.tscn")
 
 func _ready():
 	batch_characters_at_areas()
@@ -31,7 +31,7 @@ func activate_command(commands):
 	for command in commands:
 		var food: Player = instance_map[command.id].instance_node
 		
-		activate_skill(command.id as String, food, command.skill_id)
+		activate_skill(str(command.id), food, command.skill_id)
 		
 	
 func batch_characters_at_areas():
@@ -49,11 +49,11 @@ func batch_characters_at_areas():
 func get_food_instance(type):
 	match type:
 		Settings.character_type.CAKE:
-			return cake.instance()
+			return cake.instantiate()
 		Settings.character_type.JJAJANG:
-			return jjajang.instance()
+			return jjajang.instantiate()
 		Settings.character_type.JJAMBBONG:
-			return jjambbong.instance()
+			return jjambbong.instantiate()
 		_:
 			print("not found")
 	

@@ -1,28 +1,34 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dghakhoko5vpq"]
 
-[ext_resource path="res://sub_title.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/characters/cake.gd" type="Script" id=2]
-[ext_resource path="res://scenes/props/health_bar.tscn" type="PackedScene" id=3]
+[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/characters/cake.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/props/health_bar.tscn" id="3"]
 
 [node name="food" type="Control"]
-script = ExtResource( 2 )
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2")
 
 [node name="character" type="ColorRect" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
-color = Color( 0.454902, 0, 1, 1 )
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+color = Color(0.454902, 0, 1, 1)
 
 [node name="Label" type="Label" parent="."]
-margin_left = 1.0
-margin_top = 43.0
-margin_right = 149.0
-margin_bottom = 105.0
-custom_fonts/font = ExtResource( 1 )
+layout_mode = 0
+offset_left = 1.0
+offset_top = 43.0
+offset_right = 149.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 30
 text = "케이크"
-align = 1
+horizontal_alignment = 1
 
-[node name="health_bar" parent="." instance=ExtResource( 3 )]
-margin_left = 8.0
-margin_top = -5.0
-margin_right = 8.0
-margin_bottom = -5.0
+[node name="health_bar" parent="." instance=ExtResource("3")]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -5.0
+offset_right = 8.0
+offset_bottom = -5.0
