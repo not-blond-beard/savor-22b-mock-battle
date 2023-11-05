@@ -1,4 +1,4 @@
 extends Node
 
-export(int) var damage = 100
-export(SkillTargeting) var target = SkillTargeting.ENEMY
+@export var damage: int = 100
+@export var target: SkillTargeting = SkillTargeting.ENEMY

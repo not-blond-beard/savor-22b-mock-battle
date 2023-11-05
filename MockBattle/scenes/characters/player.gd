@@ -3,13 +3,13 @@ extends Control
 var _team: int
 var _health: int
 # 체력 
-export(int) var defense
+@export var defense: int
 # 방어력
-export(int) var resistance
+@export var resistance: int
 # 저항력
-export(int) var evasion
+@export var evasion: int
 # 회피력
-export(int) var critical_chance
+@export var critical_chance: int
 # 치명타 확률
 
 func _ready():
@@ -19,7 +19,7 @@ func _ready():
 func set_health_text(health: int):
 	var health_text = $health_bar/health_container/health
 	
-	health_text.text = health as String
+	health_text.text = str(health)
 
 func set_team(team: int):
 	_team = team
@@ -37,8 +37,6 @@ func get_health():
 	
 func take_damage(damage: int):
 	var health = get_health() - damage
-	
-	print(damage as String + "를 입었음")
 	
 	set_health(health)
 	

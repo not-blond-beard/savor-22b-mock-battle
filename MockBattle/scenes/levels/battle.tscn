@@ -1,116 +1,113 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dh533okqqrqoe"]
 
-[ext_resource path="res://sub_title.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/levels/battle.gd" type="Script" id=2]
+[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/levels/battle.gd" id="2"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.92549, 0.305882, 0.305882, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.92549, 0.305882, 0.305882, 1)
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 0.640625, 0.640625, 1 )
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(1, 0.640625, 0.640625, 1)
 
 [node name="Battle" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="temp_bg" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_right = 1024.0
+offset_bottom = 600.0
 
-[node name="change_scene" type="Button" parent="."]
-margin_left = 30.0
-margin_top = 16.0
-margin_right = 252.0
-margin_bottom = 87.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 1 )
+[node name="change_scene_to_file" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 16.0
+offset_right = 252.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("1")
 text = "세팅하기"
 
 [node name="defense_area" type="HBoxContainer" parent="."]
-margin_left = 14.0
-margin_top = 107.0
-margin_right = 472.0
-margin_bottom = 587.0
+offset_left = 14.0
+offset_top = 107.0
+offset_right = 472.0
+offset_bottom = 587.0
 
 [node name="back" type="Panel" parent="defense_area"]
-margin_right = 150.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="defense_area/back"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
 [node name="center" type="Panel" parent="defense_area"]
-margin_left = 154.0
-margin_right = 304.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="defense_area/center"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
 [node name="front" type="Panel" parent="defense_area"]
-margin_left = 308.0
-margin_right = 458.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="defense_area/front"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
 [node name="attack_area" type="HBoxContainer" parent="."]
-margin_left = 542.0
-margin_top = 107.0
-margin_right = 1000.0
-margin_bottom = 587.0
+offset_left = 542.0
+offset_top = 107.0
+offset_right = 1000.0
+offset_bottom = 587.0
 
 [node name="front" type="Panel" parent="attack_area"]
-margin_right = 150.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="attack_area/front"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
 [node name="center" type="Panel" parent="attack_area"]
-margin_left = 154.0
-margin_right = 304.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="attack_area/center"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
 [node name="back" type="Panel" parent="attack_area"]
-margin_left = 308.0
-margin_right = 458.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 150, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("2")
 
 [node name="container" type="VBoxContainer" parent="attack_area/back"]
-margin_right = 150.0
-margin_bottom = 452.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/separation = 160
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 452.0
+theme_override_constants/separation = 160
 
-[connection signal="pressed" from="change_scene" to="." method="_on_change_scene_pressed"]
+[connection signal="pressed" from="change_scene_to_file" to="." method="_on_change_scene_pressed"]
