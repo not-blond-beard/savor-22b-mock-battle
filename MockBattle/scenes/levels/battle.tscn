@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh533okqqrqoe"]
+[gd_scene load_steps=6 format=3 uid="uid://dh533okqqrqoe"]
 
 [ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/levels/battle.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dc3svpklgyueu" path="res://scenes/misc/winner_alert.tscn" id="3_cvldv"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.92549, 0.305882, 0.305882, 1)
@@ -109,5 +110,11 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 452.0
 theme_override_constants/separation = 160
+
+[node name="winner_alert" parent="." instance=ExtResource("3_cvldv")]
+offset_left = 169.0
+offset_top = 162.0
+offset_right = 869.0
+offset_bottom = 462.0
 
 [connection signal="pressed" from="change_scene_to_file" to="." method="_on_change_scene_pressed"]

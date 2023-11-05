@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/levels/settings.gd" id="3"]
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="3_f2etg"]
 [ext_resource type="Script" path="res://scenes/levels/text_edit.gd" id="4"]
-[ext_resource type="FontFile" path="res://label.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://cefdq34a4kdtn" path="res://label.tres" id="5"]
 
 [sub_resource type="Theme" id="1"]
 

@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc3svpklgyueu"]
+
+[ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_e53tb"]
+[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="2_h1qfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rfbc"]
+bg_color = Color(1, 1, 1, 1)
+shadow_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5oej"]
+bg_color = Color(0.92549, 0.305882, 0.305882, 1)
+
+[node name="winner_alert" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -300.0
+offset_right = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rfbc")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 23.0
+offset_right = 488.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 0.54902, 0.254902, 1)
+theme_override_fonts/font = ExtResource("1_e53tb")
+theme_override_font_sizes/font_size = 30
+text = "게임이 종료되었습니다."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="winner_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 92.0
+offset_right = 100.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_e53tb")
+theme_override_font_sizes/font_size = 20
+text = "승리한 팀은 "
+
+[node name="attack_team" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 92.0
+offset_right = 301.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_e53tb")
+theme_override_font_sizes/font_size = 20
+text = "공격 팀 입니다. "
+
+[node name="defense_team" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 92.0
+offset_right = 301.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_e53tb")
+theme_override_font_sizes/font_size = 20
+text = "수비 팀 입니다. "
+
+[node name="change_scene_to_file" type="Button" parent="."]
+offset_left = 455.0
+offset_top = 214.0
+offset_right = 677.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("2_h1qfw")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_t5oej")
+text = "세팅하기"
