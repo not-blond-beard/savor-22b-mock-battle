@@ -36,6 +36,9 @@ enum character_type {
 	CAKE
 }
 
+const DEFENSE_TEAM_CODE: int = 1
+const ATTACK_TEAM_CODE: int = 2
+
 var defense_character_position = [
 	[
 		{
