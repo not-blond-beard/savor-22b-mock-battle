@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc3svpklgyueu"]
+[gd_scene load_steps=6 format=3 uid="uid://dc3svpklgyueu"]
 
+[ext_resource type="Script" path="res://scenes/misc/winner_alert.gd" id="1_do2u6"]
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_e53tb"]
 [ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="2_h1qfw"]
 
@@ -22,6 +23,7 @@ offset_right = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2rfbc")
+script = ExtResource("1_do2u6")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
@@ -72,6 +74,7 @@ theme_override_font_sizes/font_size = 20
 text = "수비 팀 입니다. "
 
 [node name="change_scene_to_file" type="Button" parent="."]
+layout_mode = 0
 offset_left = 455.0
 offset_top = 214.0
 offset_right = 677.0
@@ -80,3 +83,5 @@ theme_override_fonts/font = ExtResource("2_h1qfw")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_t5oej")
 text = "세팅하기"
+
+[connection signal="pressed" from="change_scene_to_file" to="." method="_on_change_scene_to_file_pressed"]

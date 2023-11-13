@@ -1,21 +1,30 @@
 extends Node
 
-const Player = preload("res://scenes/characters/player.gd")
+class_name GameHelper
 
-var jjajang = preload("res://scenes/characters/jjajang.tscn")
-var jjambbong = preload("res://scenes/characters/jjambbong.tscn")
-var cake = preload("res://scenes/characters/cake.tscn")
-
-func activate_skill(instance_map, food: Player, skill_id: int):
+static func get_skill(food: Player, skill_id: int):
 	match skill_id:
 		1:
-			food.skill_1(instance_map)
+			return food.skill_1
 		2:
-			food.skill_2(instance_map)
+			return food.skill_2
+		_:
+			print("not found")
+			
+static func get_skill_settings(food: Player, skill_id: int):
+	match skill_id:
+		1:
+			return food.skill_1_settings
+		2:
+			return food.skill_2_settings
 		_:
 			print("not found")
 
-func get_food_instance(type):
+static func get_food_instance(type):
+	var jjajang = preload("res://scenes/characters/jjajang.tscn")
+	var jjambbong = preload("res://scenes/characters/jjambbong.tscn")
+	var cake = preload("res://scenes/characters/cake.tscn")
+
 	match type:
 		Settings.character_type.CAKE:
 			return cake.instantiate()
