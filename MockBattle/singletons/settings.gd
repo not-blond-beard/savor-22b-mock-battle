@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 var batch_settings = {
@@ -39,7 +39,7 @@ enum character_type {
 const DEFENSE_TEAM_CODE: int = 1
 const ATTACK_TEAM_CODE: int = 2
 
-var defense_character_position = [
+var defense_position = [
 	[
 		{
 			"type": character_type.JJAJANG,
@@ -68,7 +68,50 @@ var defense_character_position = [
 	]
 ]
 
-var attack_character_position = [
+var defense_command = [
+	{
+		"id": 1,
+		"skill_id": 1
+	},
+	{
+		"id": 1,
+		"skill_id": 2
+	},
+	{
+		"id": 2,
+		"skill_id": 1
+	},
+	{
+		"id": 2,
+		"skill_id": 2
+	},
+	{
+		"id": 3,
+		"skill_id": 1
+	},
+	{
+		"id": 3,
+		"skill_id": 2
+	},
+	{
+		"id": 4,
+		"skill_id": 1
+	},
+	{
+		"id": 4,
+		"skill_id": 2
+	},
+	{
+		"id": 5,
+		"skill_id": 1
+	},
+	{
+		"id": 5,
+		"skill_id": 2
+	},
+]
+
+var attack_position = [
 	[
 		{
 			"type": character_type.CAKE,
@@ -97,28 +140,46 @@ var attack_character_position = [
 	]
 ]
 
-# 지금은 임시로 프레임 계산이 모두중 끝나서 
-# 순서대로 실행 한다는 느낌으로 테스트 
-# 실제로는 is_attacker 이라는 게 없을 것?
-var command_result_list = [
+var attack_command = [
 	{
 		"id": 6,
-		"skill_id": 1 
+		"skill_id": 1
 	},
 	{
-		"id": 4,
+		"id": 6,
 		"skill_id": 2
+	},
+	{
+		"id": 7,
+		"skill_id": 1
 	},
 	{
 		"id": 7,
 		"skill_id": 2
 	},
 	{
-		"id": 2,
-		"skill_id": 2
-	},
-	{
 		"id": 8,
 		"skill_id": 1
 	},
+	{
+		"id": 8,
+		"skill_id": 2
+	},
+	{
+		"id": 9,
+		"skill_id": 1
+	},
+	{
+		"id": 9,
+		"skill_id": 2
+	},
+	{
+		"id": 10,
+		"skill_id": 1
+	},
+	{
+		"id": 10,
+		"skill_id": 2
+	},
 ]
+

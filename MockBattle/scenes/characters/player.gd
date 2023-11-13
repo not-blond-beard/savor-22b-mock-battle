@@ -1,5 +1,7 @@
 extends Control
 
+class_name Player
+
 var _team: int
 var _health: int
 # 체력 
@@ -11,6 +13,11 @@ var _health: int
 # 회피력
 @export var critical_chance: int
 # 치명타 확률
+
+var skill_1_settings: SkillSettings
+# 스킬 1의 발동 프레임 & 지속 턴
+var skill_2_settings: SkillSettings
+# 스킬 2의 발동 프레임 & 지속 턴
 
 func _ready():
 	pass
@@ -42,34 +49,34 @@ func take_damage(damage: int):
 	
 	return health
 	
-func skill_1(instance_map):
+func skill_1(team, enemy):
 	pass
 	
-func skill_2(instance_map):
+func skill_2(team, enemy):
 	pass
 
 func get_is_enemy(target):
 	return target.get_team() != self.get_team()
 		
-func get_enemies_at_selected_area(area: int, instance_map):
+func get_foods_at_selected_area(area: int, instance_map):
 	var target_list = []
 	
 	for key in instance_map:
 		var instance = instance_map[key]
 		var food = instance.instance_node
 		
-		if get_is_enemy(food) and area == instance.area:
+		if area == instance.area:
 			target_list.append(food)
 		
 	return target_list
-
-func get_all_enemies(instance_map):
-	var enemies = []
+	
+func get_most_unheath_food(instance_map):
+	var target = null
 	
 	for key in instance_map:
-		var instance = instance_map[key]
-		var food = instance.instance_node
+		var food = instance_map[key].instance_node
 		
-		enemies.append(food)
-		
-	return enemies
+		if target == null or (food.get_health() < target.get_health()):
+			target = food
+			
+	return target

@@ -1,25 +1,52 @@
 extends Node2D
 
 
-const Player = preload("res://scenes/characters/player.gd")
+var defense_team: BattleTeam
+var attack_team: BattleTeam
+var skill_effects
+# 유지 되어야 하는 턴, 
 
-var instance_map = {}
-
+	
 func _on_change_scene_pressed():
 	return get_tree().change_scene_to_file("res://scenes/levels/settings.tscn")
 
-func _ready():
-	batch_characters_at_areas()
-	activate_command(Settings.command_result_list)
+func show_winner():
+	var code = get_winner_team_code()
+	var winner_alert: WinnerAlert = $winner_alert
 	
-	var code = GameHelper.get_winner_team_code(instance_map)
+	winner_alert.show_winner(code)
+
+func check_game_end() -> bool:
+	if defense_team.is_over and attack_team.is_over:
+		show_winner()
+		return true
 		
-func activate_command(commands):
-	for command in commands:
-		var food: Player = instance_map[command.id].instance_node
+	return false
+
+func _on_frame_changed(frame):
+	if check_game_end():
+		FrameCounter.stop_frame()
 		
-		GameHelper.activate_skill(instance_map, food, command.skill_id)
-		
+	var defense_fire_skill = defense_team.on_frame_changed_fire_skill(frame)
+	var attack_fire_skill = attack_team.on_frame_changed_fire_skill(frame)
+	
+	if defense_fire_skill or attack_fire_skill:
+		FrameCounter.pause_frame()
+	
+
+func _ready():
+	defense_team = BattleTeam.new(Settings.DEFENSE_TEAM_CODE, Settings.defense_command)
+	attack_team = BattleTeam.new(Settings.ATTACK_TEAM_CODE, Settings.attack_command)
+	
+	defense_team.set_func_get_enemies(attack_team.get_instance_map)
+	attack_team.set_func_get_enemies(defense_team.get_instance_map)
+	
+	FrameCounter.frame_changed.connect(_on_frame_changed)
+	FrameCounter.start_frame()
+	
+	batch_characters_at_areas()
+	
+	
 func batch_characters_at_areas():
 	var defnse_front_area = $defense_area/front/container
 	var defnse_center_area = $defense_area/center/container
@@ -29,36 +56,13 @@ func batch_characters_at_areas():
 	var attack_center_area = $attack_area/center/container
 	var attack_back_area = $attack_area/back/container
 	
-	batch_characters_at_area(Settings.DEFENSE_TEAM_CODE, [defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_character_position)
-	batch_characters_at_area(Settings.ATTACK_TEAM_CODE, [attack_front_area, attack_center_area, attack_back_area], Settings.attack_character_position)
+	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_position)
+	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], Settings.attack_position)
 	
-func batch_characters_at_area(team: int, areas: Array, batchs: Array):
-	for i in range(len(areas)):
-		var area = areas[i]
-		var characters = batchs[i]
-	
-		for character in characters:
-			var food: Player = GameHelper.get_food_instance(character.type)
-			
-			instance_map[character.id] = {
-				"area": i,
-				"instance_node": food
-			}
-			
-			food.set_team(team)
-			area.add_child(food)
 
-func get_winner_team_code(instance_map) -> int:
-	var defense_team_total_health: int = 0 
-	var attack_team_total_healath: int = 0
-	
-	for key in instance_map:
-		var food: Player = instance_map[key].instance_node
-		
-		if food.get_team() == Settings.DEFENSE_TEAM_CODE:
-			defense_team_total_health += food.get_health()
-		else: 
-			attack_team_total_healath += food.get_health()
+func get_winner_team_code() -> int:
+	var defense_team_total_health: int = defense_team.get_team_health()
+	var attack_team_total_healath: int = attack_team.get_team_health()
 			
 	if defense_team_total_health > attack_team_total_healath:
 		return Settings.DEFENSE_TEAM_CODE
@@ -66,7 +70,3 @@ func get_winner_team_code(instance_map) -> int:
 		return Settings.ATTACK_TEAM_CODE
 	else:
 		return 0
-
-
-
-
