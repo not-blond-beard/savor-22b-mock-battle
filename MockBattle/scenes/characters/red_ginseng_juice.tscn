@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5jy16j6rmsy"]
+
+[ext_resource type="Script" path="res://scenes/characters/red_ginseng_juice.gd" id="1_ocl8q"]
+[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="2_cij34"]
+[ext_resource type="PackedScene" path="res://scenes/props/health_bar.tscn" id="3_c3s6j"]
+
+[node name="food" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ocl8q")
+
+[node name="character" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+color = Color(0.615686, 0.309804, 0.388235, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 43.0
+offset_right = 150.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("2_cij34")
+theme_override_font_sizes/font_size = 30
+text = "홍삼즙"
+horizontal_alignment = 1
+
+[node name="health_bar" parent="." instance=ExtResource("3_c3s6j")]
+anchors_preset = 0
+offset_left = 9.0
+offset_right = 9.0

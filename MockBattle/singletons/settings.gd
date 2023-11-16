@@ -33,7 +33,15 @@ func update_attack_command_settings(setting: String):
 enum character_type {
 	JJAJANG,
 	JJAMBBONG,
-	CAKE
+	CAKE,
+	RED_GINSENG_JUICE,
+	SEASONED_BELLFLOWER_ROOT
+}
+
+enum SkillEffectType {
+	PROTECT,
+	STUNNED,
+	CHANGED_PLAYER_STATUS
 }
 
 const DEFENSE_TEAM_CODE: int = 1
@@ -180,6 +188,6 @@ var attack_command = [
 	{
 		"id": 10,
 		"skill_id": 2
-	},
+	}
 ]
 

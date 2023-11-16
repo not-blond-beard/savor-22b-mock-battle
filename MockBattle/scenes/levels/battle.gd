@@ -1,11 +1,33 @@
 extends Node2D
 
+var _game_turn: int = 1
 
 var defense_team: BattleTeam
 var attack_team: BattleTeam
-var skill_effects
-# 유지 되어야 하는 턴, 
 
+signal game_turn_changed(current_turn)
+
+func _ready():
+	defense_team = BattleTeam.new(Settings.DEFENSE_TEAM_CODE, Settings.defense_command, game_turn_changed)
+	attack_team = BattleTeam.new(Settings.ATTACK_TEAM_CODE, Settings.attack_command, game_turn_changed)
+	
+	defense_team.set_func_get_enemies(attack_team.get_instance_map)
+	attack_team.set_func_get_enemies(defense_team.get_instance_map)
+	
+	FrameCounter.frame_changed.connect(_on_frame_changed)
+	FrameCounter.start_frame()
+	
+	batch_characters_at_areas()
+	
+func get_game_turn() -> int:
+	return _game_turn
+	
+func set_turn(turn: int):
+	_game_turn = turn
+	game_turn_changed.emit(_game_turn)
+	
+func increase_game_turn():
+	set_turn(_game_turn + 1)
 	
 func _on_change_scene_pressed():
 	return get_tree().change_scene_to_file("res://scenes/levels/settings.tscn")
@@ -27,25 +49,13 @@ func _on_frame_changed(frame):
 	if check_game_end():
 		FrameCounter.stop_frame()
 		
-	var defense_fire_skill = defense_team.on_frame_changed_fire_skill(frame)
-	var attack_fire_skill = attack_team.on_frame_changed_fire_skill(frame)
+	var defense_fire_skill: bool = defense_team.on_frame_changed_fire_skill(frame, get_game_turn())
+	var attack_fire_skill: bool = attack_team.on_frame_changed_fire_skill(frame, get_game_turn())
 	
 	if defense_fire_skill or attack_fire_skill:
+		increase_game_turn()
 		FrameCounter.pause_frame()
-	
 
-func _ready():
-	defense_team = BattleTeam.new(Settings.DEFENSE_TEAM_CODE, Settings.defense_command)
-	attack_team = BattleTeam.new(Settings.ATTACK_TEAM_CODE, Settings.attack_command)
-	
-	defense_team.set_func_get_enemies(attack_team.get_instance_map)
-	attack_team.set_func_get_enemies(defense_team.get_instance_map)
-	
-	FrameCounter.frame_changed.connect(_on_frame_changed)
-	FrameCounter.start_frame()
-	
-	batch_characters_at_areas()
-	
 	
 func batch_characters_at_areas():
 	var defnse_front_area = $defense_area/front/container
