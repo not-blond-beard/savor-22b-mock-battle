@@ -9,17 +9,19 @@ var _command_idx: int
 var _latest_frame: int
 var _get_enemies: Callable
 var _instance_map: Dictionary
+var _turn_signal: Signal
 
 var team_code: int
 var is_over: bool
 
-func _init(team: int, commands: Array):
+func _init(team: int, commands: Array, turn_signal: Signal):
 	_commands = commands
 	_get_enemies = _get_enemies
 	
 	_command_idx = 0
 	_instance_map = {}
 	_latest_frame = 0
+	_turn_signal = turn_signal
 	
 	
 	team_code = team
@@ -37,28 +39,37 @@ func _get_is_over():
 func _update_skill_history(frame):
 	_latest_frame = frame
 	_command_idx += 1
+
 		
 func _check_fire_skill(current_frame: int):
 	var command = _commands[_command_idx]
-	var food: InstanceMap = _instance_map[command.id]
+	var food: Player = _instance_map[command.id].instance_node
 	
-	var skill_settings: SkillSettings = GameHelper.get_skill_settings(food.instance_node, command.skill_id)
+	var skill_settings: SkillSettings = GameHelper.get_skill_settings(food, command.skill_id)
+	var required_frame: int = skill_settings.frame + food.damage_frame
 	
-	if skill_settings.frame <= current_frame - _latest_frame :
+	if required_frame <= current_frame - _latest_frame :
 		return true
 	else:
 		return false
 	
-func _activate_command(command):
+func _activate_command(command, turn):
 	var food: Player = _instance_map[command.id].instance_node
 	var skill: Callable = GameHelper.get_skill(food, command.skill_id)
 	
-	skill.call(_instance_map, _get_enemies.call())
+	skill.call(_instance_map, _get_enemies.call(), turn)
+	food.remove_damage_frame()
 	
 func get_instance_map():
 	return _instance_map
 		
-func on_frame_changed_fire_skill(frame) -> bool:
+func _get_current_food() -> Player:
+	var command = _commands[_command_idx]
+	var food: Player = _instance_map[command.id].instance_node
+	
+	return food
+	
+func on_frame_changed_fire_skill(frame, turn) -> bool:
 	if is_over:
 		return false
 	elif _get_is_over():
@@ -66,9 +77,13 @@ func on_frame_changed_fire_skill(frame) -> bool:
 		return false
 	
 	var fire_skill = _check_fire_skill(frame)
+	var food = _get_current_food()
 
-	if fire_skill:
-		_activate_command(_commands[_command_idx])
+	if fire_skill and food.stun:
+		food.toggle_stun(false)
+		_update_skill_history(frame)
+	elif fire_skill:
+		_activate_command(_commands[_command_idx], turn)
 		_update_skill_history(frame)
 		
 	return fire_skill
@@ -84,7 +99,10 @@ func batch_characters(areas: Array, batchs: Array):
 			_instance_map[character.id] = InstanceMap.new(i, food)
 			
 			food.set_team(team_code)
+			food.set_id(character.id)
 			area.add_child(food)
+			
+			_turn_signal.connect(food._on_turn_changed)
 
 func get_team_health() -> int:
 	var health = 0

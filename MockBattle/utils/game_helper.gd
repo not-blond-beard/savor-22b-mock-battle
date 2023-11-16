@@ -24,6 +24,7 @@ static func get_food_instance(type):
 	var jjajang = preload("res://scenes/characters/jjajang.tscn")
 	var jjambbong = preload("res://scenes/characters/jjambbong.tscn")
 	var cake = preload("res://scenes/characters/cake.tscn")
+	var red_ginseng = preload("res://scenes/characters/red_ginseng_juice.tscn")
 
 	match type:
 		Settings.character_type.CAKE:
@@ -32,6 +33,8 @@ static func get_food_instance(type):
 			return jjajang.instantiate()
 		Settings.character_type.JJAMBBONG:
 			return jjambbong.instantiate()
+		Settings.character_type.RED_GINSENG_JUICE:
+			return red_ginseng.instantiate()
 		_:
 			print("not found")
 
