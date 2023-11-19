@@ -1,34 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://dghakhoko5vpq"]
 
-[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/characters/cake.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="SpriteFrames" uid="uid://cslym11udvobd" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_grym.tres" id="3_u4cci"]
 
-[node name="food" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="food" type="Area2D"]
 script = ExtResource("2")
 
-[node name="character" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 150.0
-color = Color(0.454902, 0, 1, 1)
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 149.0
-offset_bottom = 105.0
-theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 30
-text = "케이크"
-horizontal_alignment = 1
-
 [node name="health_bar" parent="." instance=ExtResource("3")]
-anchors_preset = 0
-offset_left = 8.0
-offset_top = -5.0
-offset_right = 8.0
-offset_bottom = -5.0
+offset_left = 48.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = -8.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(14, 23)
+scale = Vector2(1.4, 1.4)
+sprite_frames = ExtResource("3_u4cci")
+animation = &"idle"
+offset = Vector2(47.6667, 27.5)

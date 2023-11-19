@@ -1,32 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://b85yi3a627ca3"]
 
-[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/characters/jjambbong.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="SpriteFrames" uid="uid://crblbpanulhwa" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_umbra.tres" id="3_xd12i"]
 
-[node name="food" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="food" type="Area2D"]
 script = ExtResource("2")
 
-[node name="character" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 150.0
-color = Color(0.0313726, 0.509804, 0.117647, 1)
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 150.0
-offset_bottom = 160.0
-theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 30
-text = "짬뽕"
-horizontal_alignment = 1
-
 [node name="health_bar" parent="." instance=ExtResource("3")]
-anchors_preset = 0
-offset_left = 9.0
-offset_right = 9.0
+offset_left = 50.0
+offset_top = -6.0
+offset_right = 50.0
+offset_bottom = -6.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, -13)
+scale = Vector2(1.6, 1.6)
+sprite_frames = ExtResource("3_xd12i")
+animation = &"idle"
+offset = Vector2(39.2857, 39.2857)

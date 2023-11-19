@@ -1,28 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://b3qxr885pjvvh"]
 
-[ext_resource path="res://label.tres" type="FontFile" id=1]
+[ext_resource type="FontFile" uid="uid://cefdq34a4kdtn" path="res://label.tres" id="1"]
 
 [node name="health_bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_top = -1.0
 offset_bottom = -1.0
 
 [node name="health_container" type="HBoxContainer" parent="."]
-offset_right = 40.0
+layout_mode = 0
+offset_right = 52.0
 offset_bottom = 40.0
 theme_override_constants/separation = 5
 
 [node name="label" type="Label" parent="health_container"]
-offset_top = 11.0
-offset_right = 40.0
-offset_bottom = 29.0
-theme_override_colors/font_color = Color( 0, 1, 0.835294, 1 )
-theme_override_fonts/font = ExtResource( 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 12
 text = "[체력]"
 
 [node name="health" type="Label" parent="health_container"]
-offset_left = 45.0
-offset_top = 11.0
-offset_right = 55.0
-offset_bottom = 29.0
-theme_override_fonts/font = ExtResource( 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 12
 text = "-"

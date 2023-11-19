@@ -1,34 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw0uinln706j8"]
 
-[ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/characters/jjajang.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
+[ext_resource type="SpriteFrames" uid="uid://cvlg18t588bcc" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_city.tres" id="3_t6myi"]
 
-[node name="food" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="food" type="Area2D"]
 script = ExtResource("2")
 
-[node name="character" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 150.0
-color = Color(0.952941, 0.00784314, 0.560784, 1)
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 148.0
-offset_bottom = 160.0
-theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 30
-text = "짜장"
-horizontal_alignment = 1
-
 [node name="health_bar" parent="." instance=ExtResource("3")]
-anchors_preset = 0
-offset_left = 7.0
-offset_top = -5.0
-offset_right = 7.0
-offset_bottom = -5.0
+offset_left = 50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = -10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(1.8, 1.8)
+sprite_frames = ExtResource("3_t6myi")
+animation = &"attack"
+offset = Vector2(40.7143, 40)

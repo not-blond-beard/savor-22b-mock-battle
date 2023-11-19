@@ -1,6 +1,8 @@
-extends Control
+extends Area2D
 
 class_name Player
+
+@onready var _animated_sprite = $AnimatedSprite2D
 
 var _team: int
 var _id: int
@@ -51,6 +53,9 @@ func _on_turn_changed(next_turn: int):
 	
 func add_skill_effect(skill: SkillEffect):
 	skill_effect.append(skill)
+
+func _process(_delta):
+	_animated_sprite.play("idle")
 	
 func set_health_text(health: int):
 	var health_text = $health_bar/health_container/health
@@ -148,6 +153,7 @@ func remove_damage_frame():
 	damage_frame = 0
 	
 func skill_1(team, enemies, turn):
+	_animated_sprite.play("attack")
 	pass
 	
 func skill_2(team, enemies, turn):

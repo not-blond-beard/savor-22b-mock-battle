@@ -87,22 +87,27 @@ func on_frame_changed_fire_skill(frame, turn) -> bool:
 		_update_skill_history(frame)
 		
 	return fire_skill
-		
-func batch_characters(areas: Array, batchs: Array):
+
+func batch_characters(areas: Array, batches: Array):
+	var spacing = 134
 	for i in range(len(areas)):
 		var area = areas[i]
-		var characters = batchs[i]
-	
+		var characters = batches[i]
+		var current_y_position = 0
+
 		for character in characters:
 			var food: Player = GameHelper.get_food_instance(character.type)
-			
 			_instance_map[character.id] = InstanceMap.new(i, food)
 			
 			food.set_team(team_code)
 			food.set_id(character.id)
 			area.add_child(food)
-			
 			_turn_signal.connect(food._on_turn_changed)
+
+			food.position.x = 0
+			food.position.y = current_y_position
+			current_y_position += spacing
+
 
 func get_team_health() -> int:
 	var health = 0
