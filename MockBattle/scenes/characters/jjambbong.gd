@@ -16,6 +16,7 @@ func _ready():
 func skill_1(team, enemies, turn):
 	# 스킬 1 (발동 10)
 	# 1열에 있는 음식 1개에게 데미지 30을 주고 손해프레임 3을 줍니다.
+	super(team, enemies, turn)
 
 	var targets = get_foods_at_selected_area(1, enemies)
 	var target = self.get_random_player(targets)
@@ -27,6 +28,7 @@ func skill_1(team, enemies, turn):
 func skill_2(team, enemies, turn):
 	# 스킬 2 (발동 15, 2턴 지속)
 	# 모든 상대에게 5데미지를 주고 방어력을 10 깎습니다.
+	super(team, enemies, turn)
 	
 	for key in enemies:
 		var enemy: InstanceMap = enemies[key]

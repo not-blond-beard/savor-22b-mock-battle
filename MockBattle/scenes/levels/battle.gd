@@ -18,7 +18,7 @@ func _ready():
 	FrameCounter.start_frame()
 	
 	batch_characters_at_areas()
-	
+
 func get_game_turn() -> int:
 	return _game_turn
 	
