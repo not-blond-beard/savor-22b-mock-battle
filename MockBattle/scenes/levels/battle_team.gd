@@ -88,7 +88,7 @@ func on_frame_changed_fire_skill(frame, turn) -> bool:
 		
 	return fire_skill
 
-func batch_characters(areas: Array, batches: Array):
+func batch_characters(areas: Array, batches: Array, flip: bool):
 	var spacing = 134
 	for i in range(len(areas)):
 		var area = areas[i]
@@ -106,6 +106,11 @@ func batch_characters(areas: Array, batches: Array):
 
 			food.position.x = 0
 			food.position.y = current_y_position
+			
+			if flip:
+				var animated_sprite = food.get_node("AnimatedSprite2D")
+				animated_sprite.flip_h = true
+			
 			current_y_position += spacing
 
 

@@ -66,8 +66,8 @@ func batch_characters_at_areas():
 	var attack_center_area = $attack_area/center/container
 	var attack_back_area = $attack_area/back/container
 	
-	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_position)
-	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], Settings.attack_position)
+	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_position, false)
+	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], Settings.attack_position, true)
 	
 
 func get_winner_team_code() -> int:
