@@ -90,19 +90,59 @@ func get_matching_character_to_tanking(team: Dictionary) -> Player:
 			return team[effect.skill_owner_id].instance_node as Player
 	
 	return self
+
+# 상대방에게 공격을 입힐 때 사용할 데미지 계산
+func calculate_inflicted_damage(origin_damage: int) -> int:
+	var critical = GameHelper.is_probability_success(critical_chance)
+	var add_damage := GameHelper.calculate_percentage(origin_damage, 40)
+	
+	if critical:
+		return origin_damage + add_damage
+	else:
+		return origin_damage
+	
+		
+# 내게 적용될 데미지를 계산
+func _calculate_final_received_damage(origin_damage: int) -> int:
+	if GameHelper.is_probability_success(evasion):
+		return 0
+		
+	var minus_damage = GameHelper.calculate_percentage(origin_damage, defense)
+	
+	return origin_damage - minus_damage
+	
 	
 func take_damage(damage: int):
-	var health = get_health() - damage
+	var final_damange := _calculate_final_received_damage(damage)
 	
-	set_health(health)
+	if final_damange <= 0:
+		return get_health()
+		
+	set_health(get_health() - final_damange)
 	
-	return health
+	return get_health()
 	
-func toggle_stun(toggle: bool):
+func check_activate_status_effect() -> bool:
+	if GameHelper.is_probability_success(resistance):
+		return false
+		
+	return true
+	
+func toggle_stun(toggle: bool) -> bool:
+	if toggle and !check_activate_status_effect():
+		return false
+		
 	stun = toggle
 	
-func plus_damage_frame(_damage_frame: int):
+	return stun
+	
+func plus_damage_frame(_damage_frame: int) -> bool:
+	if !check_activate_status_effect():
+		return false
+		
 	damage_frame += _damage_frame
+	
+	return true
 	
 func remove_damage_frame():
 	damage_frame = 0

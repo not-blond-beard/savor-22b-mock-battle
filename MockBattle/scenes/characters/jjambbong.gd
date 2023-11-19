@@ -20,7 +20,7 @@ func skill_1(team, enemies, turn):
 	var targets = get_foods_at_selected_area(1, enemies)
 	var target = self.get_random_player(targets)
 		
-	target.take_damage(30)
+	target.take_damage(calculate_inflicted_damage(30))
 	target.plus_damage_frame(3)
 		
 
@@ -39,7 +39,7 @@ func skill_2(team, enemies, turn):
 			"defense"
 		)
 		
-		enemy.instance_node.take_damage(5)
+		enemy.instance_node.take_damage(calculate_inflicted_damage(5))
 		enemy.instance_node.defense += -10
 		enemy.instance_node.add_skill_effect(effect)
 		

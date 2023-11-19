@@ -25,7 +25,7 @@ func skill_1(team, enemies, turn):
 	var result_target: Player = target.get_matching_character_to_tanking(enemies)
 	
 	if result_target:
-		result_target.take_damage(35)
+		result_target.take_damage(calculate_inflicted_damage(35))
 	
 func skill_2(team, enemies, turn):
 	# 스킬 2 (발동 18)
@@ -34,4 +34,4 @@ func skill_2(team, enemies, turn):
 	var targets = get_foods_at_selected_area(0, enemies)
 	
 	for enemy in targets:
-		enemy.take_damage(15)
+		enemy.take_damage(calculate_inflicted_damage(15))
