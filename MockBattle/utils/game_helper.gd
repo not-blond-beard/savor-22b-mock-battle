@@ -2,6 +2,13 @@ extends Node
 
 class_name GameHelper
 
+static func is_probability_success(percent: int) -> bool:
+	return randf() < (float(percent) / 100.0)
+	
+static func calculate_percentage(original: int, percentage: int) -> float:
+	var difference = original * (float(percentage) / 100.0)
+	return difference
+
 static func get_skill(food: Player, skill_id: int):
 	match skill_id:
 		1:
