@@ -11,6 +11,8 @@ static func calculate_percentage(original: int, percentage: int) -> float:
 
 static func get_skill(food: Player, skill_id: int):
 	match skill_id:
+		0:
+			return food.skill_guard
 		1:
 			return food.skill_1
 		2:
@@ -20,6 +22,8 @@ static func get_skill(food: Player, skill_id: int):
 			
 static func get_skill_settings(food: Player, skill_id: int):
 	match skill_id:
+		0: 
+			return SkillSettings.new(0)
 		1:
 			return food.skill_1_settings
 		2:

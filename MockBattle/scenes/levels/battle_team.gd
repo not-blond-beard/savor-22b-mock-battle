@@ -34,17 +34,16 @@ func set_is_over():
 	is_over = true
 
 func _get_is_over():
-	return len(_commands) - 1 <= _command_idx
+	var is_last = len(_commands) - 1 <= _command_idx
+	
+	return is_last
+		
 		
 func _update_skill_history(frame):
 	_latest_frame = frame
 	_command_idx += 1
-
 		
-func _check_fire_skill(current_frame: int):
-	var command = _commands[_command_idx]
-	var food: Player = _instance_map[command.id].instance_node
-	
+func _check_fire_skill(current_frame: int, command, food):
 	var skill_settings: SkillSettings = GameHelper.get_skill_settings(food, command.skill_id)
 	var required_frame: int = skill_settings.frame + food.damage_frame
 	
@@ -53,38 +52,45 @@ func _check_fire_skill(current_frame: int):
 	else:
 		return false
 	
-func _activate_command(command, turn):
+func _activate_command(command: Dictionary, turn):
 	var food: Player = _instance_map[command.id].instance_node
 	var skill: Callable = GameHelper.get_skill(food, command.skill_id)
 	
-	skill.call(_instance_map, _get_enemies.call(), turn)
+	skill.call(_instance_map, _get_enemies.call(), turn, command.get("meta", null))
 	food.remove_damage_frame()
 	
 func get_instance_map():
 	return _instance_map
+	
+func clear_guard():
+	if _command_idx > 0:
+		var command = _commands[_command_idx - 1]
+		var food: Player = _instance_map[command.id].instance_node
+	
+		food.active_guard()
+	
+func on_frame_changed_fire_skill(frame, turn):
+	if is_over:
+		return false
 		
-func _get_current_food() -> Player:
 	var command = _commands[_command_idx]
 	var food: Player = _instance_map[command.id].instance_node
 	
-	return food
+	var fire_skill = _check_fire_skill(frame, command, food)
 	
-func on_frame_changed_fire_skill(frame, turn) -> bool:
-	if is_over:
-		return false
-	elif _get_is_over():
+	if _get_is_over() and fire_skill:
 		set_is_over()
-		return false
-	
-	var fire_skill = _check_fire_skill(frame)
-	var food = _get_current_food()
-
+		
+	if !food.guard_disabled:
+		food.deactive_guard()
+		
 	if fire_skill and food.stun:
 		food.toggle_stun(false)
 		_update_skill_history(frame)
 	elif fire_skill:
 		_activate_command(_commands[_command_idx], turn)
 		_update_skill_history(frame)
+		
 		
 	return fire_skill
 

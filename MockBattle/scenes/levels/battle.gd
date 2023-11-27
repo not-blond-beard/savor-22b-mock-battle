@@ -48,6 +48,7 @@ func check_game_end() -> bool:
 func _on_frame_changed(frame):
 	if check_game_end():
 		FrameCounter.stop_frame()
+		return
 		
 	var defense_fire_skill: bool = defense_team.on_frame_changed_fire_skill(frame, get_game_turn())
 	var attack_fire_skill: bool = attack_team.on_frame_changed_fire_skill(frame, get_game_turn())
@@ -55,7 +56,12 @@ func _on_frame_changed(frame):
 	if defense_fire_skill or attack_fire_skill:
 		increase_game_turn()
 		FrameCounter.pause_frame()
-
+		
+	if defense_fire_skill:
+		defense_team.clear_guard()
+	
+	if attack_fire_skill:
+		attack_team.clear_guard()
 	
 func batch_characters_at_areas():
 	var defnse_front_area = $defense_area/front/container
