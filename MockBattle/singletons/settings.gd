@@ -86,6 +86,11 @@ var defense_command = [
 		"skill_id": 2
 	},
 	{
+		"id": 1,
+		"skill_id": 0,
+		"meta": 1,
+	},
+	{
 		"id": 2,
 		"skill_id": 1
 	},
@@ -94,12 +99,22 @@ var defense_command = [
 		"skill_id": 2
 	},
 	{
+		"id": 1,
+		"skill_id": 0,
+		"meta": 0,
+	},
+	{
 		"id": 3,
 		"skill_id": 1
 	},
 	{
 		"id": 3,
 		"skill_id": 2
+	},
+	{
+		"id": 1,
+		"skill_id": 0,
+		"meta": 1,
 	},
 	{
 		"id": 4,

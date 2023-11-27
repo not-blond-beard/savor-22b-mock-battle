@@ -22,6 +22,9 @@ var _health: int
 @export var damage_frame: int
 # 데미지 프레임
 @export var stun: bool
+# 상태 이상 (스턴)
+@export var guard_disabled: bool
+@export var guard_position: int
 
 var skill_1_settings: SkillSettings
 # 스킬 1의 발동 프레임 & 지속 턴
@@ -37,6 +40,15 @@ func _process(delta):
 	if _animated_sprite.animation != "idle":
 		if !_animated_sprite.is_playing():
 			_animated_sprite.play("idle")
+			
+func deactive_guard():
+	guard_disabled = true
+	
+func active_guard():
+	guard_disabled = false
+	
+func change_guard_position(position: int): 
+	guard_position = position
 
 func init_player_status(effect: SkillEffect):
 	var origin_status: int = self.get(effect.target_stat)
@@ -108,19 +120,31 @@ func calculate_inflicted_damage(origin_damage: int) -> int:
 	else:
 		return origin_damage
 	
+func _calculate_guard_received_defense(origin_damage: int, positiion: int) -> int:
+	if guard_disabled:
+		return defense
+	elif positiion == guard_position:
+		if positiion == 0:
+			var origin_defense = GameHelper.calculate_percentage(30, defense)
+			return 70 + origin_defense
+		elif positiion == 1:
+			return 100
+	
+	return defense
 		
 # 내게 적용될 데미지를 계산
-func _calculate_final_received_damage(origin_damage: int) -> int:
+func _calculate_final_received_damage(origin_damage: int, positiion: int) -> int:
 	if GameHelper.is_probability_success(evasion):
 		return 0
 		
-	var minus_damage = GameHelper.calculate_percentage(origin_damage, defense)
+	var result_defense: int = _calculate_guard_received_defense(origin_damage, positiion)
+	var minus_damage = GameHelper.calculate_percentage(origin_damage, result_defense)
 	
 	return origin_damage - minus_damage
 	
 	
-func take_damage(damage: int):
-	var final_damange := _calculate_final_received_damage(damage)
+func take_damage(damage: int, position: int):
+	var final_damange := _calculate_final_received_damage(damage, position)
 	
 	if final_damange <= 0:
 		return get_health()
@@ -155,11 +179,14 @@ func plus_damage_frame(_damage_frame: int) -> bool:
 func remove_damage_frame():
 	damage_frame = 0
 	
-func skill_1(team, enemies, turn):
+func skill_1(team, enemies, turn, meta):
 	_animated_sprite.play("attack")
 	
-func skill_2(team, enemies, turn):
+func skill_2(team, enemies, turn, meta):
 	_animated_sprite.play("attack")
+	
+func skill_guard(team, enemies, turn, meta):
+	change_guard_position(meta)
 
 func get_is_enemy(target):
 	return target.get_team() != self.get_team()
