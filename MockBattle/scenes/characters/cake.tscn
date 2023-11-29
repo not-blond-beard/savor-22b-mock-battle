@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/characters/cake.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
-[ext_resource type="SpriteFrames" uid="uid://cslym11udvobd" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_grym.tres" id="3_u4cci"]
+[ext_resource type="SpriteFrames" uid="uid://d4cx26703ou5w" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_grym.tres" id="3_u4cci"]
 
 [node name="food" type="Area2D"]
 script = ExtResource("2")
@@ -17,7 +17,5 @@ offset_bottom = -8.0
 position = Vector2(14, 23)
 scale = Vector2(1.4, 1.4)
 sprite_frames = ExtResource("3_u4cci")
-animation = &"attack"
+animation = &"run"
 offset = Vector2(47.6667, 27.5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5flerjh8n7em"]
+
+[ext_resource type="Script" path="res://scenes/characters/mala_tang.gd" id="1_xstbk"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_201u5"]
+[ext_resource type="SpriteFrames" uid="uid://d0lsy4mvml3fs" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_legion.tres" id="3_p2dg5"]
+
+[node name="food" type="Area2D"]
+script = ExtResource("1_xstbk")
+
+[node name="health_bar" parent="." instance=ExtResource("2_201u5")]
+offset_left = 9.0
+offset_top = 0.0
+offset_right = 9.0
+offset_bottom = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(1.8, 1.8)
+sprite_frames = ExtResource("3_p2dg5")
+animation = &"run"
+frame_progress = 0.613944
+offset = Vector2(40.7143, 40)

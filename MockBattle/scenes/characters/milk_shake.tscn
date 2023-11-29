@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwm3jqyodht44"]
+
+[ext_resource type="Script" path="res://scenes/characters/milk_shake.gd" id="1_6xt6c"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_0b73y"]
+[ext_resource type="SpriteFrames" uid="uid://xw1cqmdmvufw" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_malyk.tres" id="2_hpph5"]
+
+[node name="food" type="Area2D"]
+script = ExtResource("1_6xt6c")
+
+[node name="health_bar" parent="." instance=ExtResource("2_0b73y")]
+offset_left = 9.0
+offset_top = 0.0
+offset_right = 9.0
+offset_bottom = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(1.8, 1.8)
+sprite_frames = ExtResource("2_hpph5")
+animation = &"idle"
+frame_progress = 0.859338
+offset = Vector2(40.7143, 40)

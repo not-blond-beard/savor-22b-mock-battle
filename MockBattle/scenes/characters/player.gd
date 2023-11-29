@@ -37,7 +37,7 @@ func _ready():
 	_animated_sprite.play("idle")
 
 func _process(delta):
-	if _animated_sprite.animation != "idle":
+	if get_health() > 0 and _animated_sprite.animation != "idle":
 		if !_animated_sprite.is_playing():
 			_animated_sprite.play("idle")
 			
@@ -88,10 +88,26 @@ func get_id():
 func get_team():
 	return _team
 	
-func set_health(health: int):
-	_health = health
+func add_health(health: int):
+	if get_health() <= 0:
+		return
+		
+	set_health(get_health() + health)
+
+func _death():
+	_health = 0
 	
-	set_health_text(health)
+	set_health_text(0)
+	hide()
+	
+	
+func set_health(health: int):
+	if health <= 0:
+		return _death()
+		
+	_health = health
+	set_health_text(_health)
+	
 
 func get_health():
 	return _health
@@ -209,7 +225,7 @@ func get_most_unheath_food(instance_map):
 	for key in instance_map:
 		var food = instance_map[key].instance_node
 		
-		if target == null or (food.get_health() < target.get_health()):
+		if (target == null or (food.get_health() < target.get_health())) and food.get_health() >= 0:
 			target = food
 			
 	return target
