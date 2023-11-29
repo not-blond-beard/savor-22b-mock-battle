@@ -17,5 +17,5 @@ offset_bottom = -10.0
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(1.8, 1.8)
 sprite_frames = ExtResource("3_t6myi")
-animation = &"breathing"
+animation = &"idle"
 offset = Vector2(40.7143, 40)

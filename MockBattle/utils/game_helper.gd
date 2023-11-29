@@ -32,20 +32,38 @@ static func get_skill_settings(food: Player, skill_id: int):
 			print("not found")
 
 static func get_food_instance(type):
-	var jjajang = preload("res://scenes/characters/jjajang.tscn")
-	var jjambbong = preload("res://scenes/characters/jjambbong.tscn")
-	var cake = preload("res://scenes/characters/cake.tscn")
-	var red_ginseng = preload("res://scenes/characters/red_ginseng_juice.tscn")
 
 	match type:
 		Settings.character_type.CAKE:
+			var cake = preload("res://scenes/characters/cake.tscn")
 			return cake.instantiate()
 		Settings.character_type.JJAJANG:
+			var jjajang = preload("res://scenes/characters/jjajang.tscn")
 			return jjajang.instantiate()
 		Settings.character_type.JJAMBBONG:
+			var jjambbong = preload("res://scenes/characters/jjambbong.tscn")
 			return jjambbong.instantiate()
 		Settings.character_type.RED_GINSENG_JUICE:
+			var red_ginseng = preload("res://scenes/characters/red_ginseng_juice.tscn")
 			return red_ginseng.instantiate()
+		Settings.character_type.SEASONED_BELLFLOWER_ROOT:
+			var seasoned_bellflower_root = preload("res://scenes/characters/seasoned_bellflower_root.tscn")
+			return seasoned_bellflower_root.instantiate()
+		Settings.character_type.MALA_XIANG_GUO:
+			var mala_xiang_guo = preload("res://scenes/characters/mala_xiang_guo.tscn")
+			return mala_xiang_guo.instantiate()
+		Settings.character_type.MILK_SHAKE:
+			var milk_shake = preload("res://scenes/characters/milk_shake.tscn")
+			return milk_shake.instantiate()
+		Settings.character_type.MALA_TANG:
+			var mala_tang = preload("res://scenes/characters/mala_tang.tscn")
+			return mala_tang.instantiate()
+		Settings.character_type.KUNG_PAO_CHICKEN:
+			var kung_pao_chicken = preload("res://scenes/characters/kung_pao_chicken.tscn")
+			return kung_pao_chicken.instantiate()
+		Settings.character_type.STIR_FRIED_FISH_CAKE:
+			var stir_fried_fish_cake = preload("res://scenes/characters/stir_fried_fish_cake.tscn")
+			return stir_fried_fish_cake.instantiate()
 		_:
 			print("not found")
 

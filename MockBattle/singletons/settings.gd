@@ -35,7 +35,12 @@ enum character_type {
 	JJAMBBONG,
 	CAKE,
 	RED_GINSENG_JUICE,
-	SEASONED_BELLFLOWER_ROOT
+	SEASONED_BELLFLOWER_ROOT,
+	MALA_XIANG_GUO,
+	MILK_SHAKE,
+	MALA_TANG,
+	KUNG_PAO_CHICKEN,
+	STIR_FRIED_FISH_CAKE
 }
 
 enum SkillEffectType {
@@ -141,7 +146,7 @@ var attack_position = [
 			"id": 6
 		},
 		{
-			"type": character_type.JJAJANG,
+			"type": character_type.MILK_SHAKE,
 			"id": 7
 		},
 		{
