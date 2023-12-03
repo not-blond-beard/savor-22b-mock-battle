@@ -27,128 +27,136 @@ script = ExtResource("3")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 600.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 305.0
-offset_top = 19.0
-offset_right = 703.0
-offset_bottom = 80.0
+offset_left = 730.0
+offset_top = 22.0
+offset_right = 1056.0
+offset_bottom = 121.0
 theme = SubResource("1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 65
 text = "설정하기"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="defensive_character" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 111.0
-offset_right = 490.0
-offset_bottom = 303.0
+offset_left = 109.0
+offset_top = 159.0
+offset_right = 889.0
+offset_bottom = 509.0
 pivot_offset = Vector2(-207, -18)
-theme_override_constants/separation = 9
+theme_override_constants/separation = 15
 
 [node name="label" type="Label" parent="defensive_character"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_f2etg")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "수비 캐릭터 배치하기"
 
 [node name="edit" type="TextEdit" parent="defensive_character"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("2")
 script = ExtResource("4")
 
 [node name="attack_character" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 111.0
-offset_right = 970.0
-offset_bottom = 303.0
+offset_left = 977.0
+offset_top = 159.0
+offset_right = 1757.0
+offset_bottom = 509.0
 pivot_offset = Vector2(-207, -18)
-theme_override_constants/separation = 9
+theme_override_constants/separation = 15
 
 [node name="label" type="Label" parent="attack_character"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "공격 캐릭터 배치하기"
 
 [node name="edit" type="TextEdit" parent="attack_character"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("2")
 script = ExtResource("4")
 
 [node name="defensive_command" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 325.0
-offset_right = 490.0
-offset_bottom = 517.0
+offset_left = 112.0
+offset_top = 603.0
+offset_right = 892.0
+offset_bottom = 953.0
 pivot_offset = Vector2(-207, -18)
-theme_override_constants/separation = 9
+theme_override_constants/separation = 15
 
 [node name="label" type="Label" parent="defensive_command"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "수비 기보 입력하기"
 
 [node name="edit" type="TextEdit" parent="defensive_command"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("2")
 script = ExtResource("4")
 
 [node name="attack_command" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 325.0
-offset_right = 970.0
-offset_bottom = 517.0
+offset_left = 968.0
+offset_top = 606.0
+offset_right = 1748.0
+offset_bottom = 956.0
 pivot_offset = Vector2(-207, -18)
-theme_override_constants/separation = 9
+theme_override_constants/separation = 15
 
 [node name="label" type="Label" parent="attack_command"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 45
 text = "공격 기보 입력하기"
 
 [node name="edit" type="TextEdit" parent="attack_command"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("2")
 script = ExtResource("4")
 
 [node name="game_start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 691.0
-offset_top = 526.0
-offset_right = 970.0
-offset_bottom = 582.0
+offset_left = 1529.0
+offset_top = 21.0
+offset_right = 1887.0
+offset_bottom = 107.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("3")
 text = "게임 실행하기"
 

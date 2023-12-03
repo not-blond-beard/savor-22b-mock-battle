@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://csmtgpqxsvhl"]
+[gd_scene load_steps=3 format=3 uid="uid://bf4faooi6a3cj"]
 
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_qp5pf"]
 [ext_resource type="SpriteFrames" uid="uid://csnlul0fvhkdt" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_wujin.tres" id="3_2dcxt"]
@@ -15,5 +15,6 @@ offset_bottom = 0.0
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(1.8, 1.8)
 sprite_frames = ExtResource("3_2dcxt")
-animation = &"hit"
+animation = &"idle"
+autoplay = "idle"
 offset = Vector2(40.7143, 40)

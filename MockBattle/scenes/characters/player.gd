@@ -32,14 +32,6 @@ var skill_2_settings: SkillSettings
 # 스킬 2의 발동 프레임 & 지속 턴
 
 var skill_effect: Array[SkillEffect]
-
-func _ready():
-	_animated_sprite.play("idle")
-
-func _process(delta):
-	if get_health() > 0 and _animated_sprite.animation != "idle":
-		if !_animated_sprite.is_playing():
-			_animated_sprite.play("idle")
 			
 func deactive_guard():
 	guard_disabled = true
@@ -157,7 +149,17 @@ func _calculate_final_received_damage(origin_damage: int, positiion: int) -> int
 	var minus_damage = GameHelper.calculate_percentage(origin_damage, result_defense)
 	
 	return origin_damage - minus_damage
+
+func play_special_animation(animation: String):
+	_animated_sprite.play(animation)
 	
+	_animated_sprite.connect("animation_finished", _on_animation_finished)
+	
+func _on_animation_finished():
+	if _animated_sprite.is_connected("animation_finished", _on_animation_finished):
+		_animated_sprite.disconnect("animation_finished", _on_animation_finished)
+		
+	_animated_sprite.play("idle")
 	
 func take_damage(damage: int, position: int):
 	var final_damange := _calculate_final_received_damage(damage, position)
@@ -166,7 +168,7 @@ func take_damage(damage: int, position: int):
 		return get_health()
 		
 	set_health(get_health() - final_damange)
-	_animated_sprite.play("hit")
+	play_special_animation("hit")
 	
 	return get_health()
 	
@@ -196,10 +198,10 @@ func remove_damage_frame():
 	damage_frame = 0
 	
 func skill_1(team, enemies, turn, meta):
-	_animated_sprite.play("attack")
+	play_special_animation("attack")
 	
 func skill_2(team, enemies, turn, meta):
-	_animated_sprite.play("attack")
+	play_special_animation("attack")
 	
 func skill_guard(team, enemies, turn, meta):
 	change_guard_position(meta)

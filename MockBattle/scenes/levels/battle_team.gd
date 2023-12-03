@@ -95,7 +95,7 @@ func on_frame_changed_fire_skill(frame, turn):
 	return fire_skill
 
 func batch_characters(areas: Array, batches: Array, flip: bool):
-	var spacing = 134
+	var spacing = 250
 	for i in range(len(areas)):
 		var area = areas[i]
 		var characters = batches[i]

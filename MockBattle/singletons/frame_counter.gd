@@ -3,7 +3,7 @@ extends Node2D
 var frame: int = 0
 var frame_disabled: bool = true
 
-@export var skill_pause_frame_second: int = 1
+@export var skill_pause_frame_second: int = 3
 
 signal frame_changed(new_frame)
 

@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://c32kjqcsfmoqh"]
+
+[ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_3rkqd"]
+
+[node name="character_info" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_bottom = -1.0
+
+[node name="id_label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 41.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "[ID]"
+
+[node name="id" type="Label" parent="."]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 102.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "-"
+
+[node name="name_label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 37.0
+offset_right = 67.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "[이름]"
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 131.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "-"
+
+[node name="type_label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 63.0
+offset_right = 67.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "[속성]"
+
+[node name="type" type="Label" parent="."]
+layout_mode = 2
+offset_left = 65.0
+offset_top = 63.0
+offset_right = 119.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "-"

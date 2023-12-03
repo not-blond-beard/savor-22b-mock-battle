@@ -10,7 +10,8 @@ offset_bottom = -1.0
 
 [node name="health_container" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 52.0
+offset_left = 8.0
+offset_right = 60.0
 offset_bottom = 40.0
 theme_override_constants/separation = 5
 
@@ -18,12 +19,12 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 15
 text = "[체력]"
 
 [node name="health" type="Label" parent="health_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 15
 text = "-"

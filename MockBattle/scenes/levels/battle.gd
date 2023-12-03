@@ -1,6 +1,6 @@
 extends Node2D
 
-var _game_turn: int = 1
+var _game_turn: int = 0
 
 var defense_team: BattleTeam
 var attack_team: BattleTeam
@@ -15,6 +15,7 @@ func _ready():
 	attack_team.set_func_get_enemies(defense_team.get_instance_map)
 	
 	FrameCounter.frame_changed.connect(_on_frame_changed)
+	FrameCounter.frame_changed.connect(_update_frame_text)
 	FrameCounter.start_frame()
 	
 	batch_characters_at_areas()
@@ -22,8 +23,15 @@ func _ready():
 func get_game_turn() -> int:
 	return _game_turn
 	
+func _set_turn_text(turn: int):
+	var text = $main_panel/turn
+	
+	text.text = str(turn) + "턴"
+	
 func set_turn(turn: int):
 	_game_turn = turn
+	_set_turn_text(turn)
+	
 	game_turn_changed.emit(_game_turn)
 	
 func increase_game_turn():
@@ -45,6 +53,11 @@ func check_game_end() -> bool:
 		
 	return false
 
+func _update_frame_text(frame: int):
+	var text = $main_panel/frame
+	
+	text.text = str(frame)
+	
 func _on_frame_changed(frame):
 	if check_game_end():
 		FrameCounter.stop_frame()
@@ -64,13 +77,13 @@ func _on_frame_changed(frame):
 		attack_team.clear_guard()
 	
 func batch_characters_at_areas():
-	var defnse_front_area = $defense_area/front/container
-	var defnse_center_area = $defense_area/center/container
-	var defnse_back_area = $defense_area/back/container
+	var defnse_front_area = $defense_panel/front
+	var defnse_center_area = $defense_panel/center
+	var defnse_back_area = $defense_panel/back
 	
-	var attack_front_area = $attack_area/front/container
-	var attack_center_area = $attack_area/center/container
-	var attack_back_area = $attack_area/back/container
+	var attack_front_area = $attack_panel/front
+	var attack_center_area = $attack_panel/center
+	var attack_back_area = $attack_panel/back
 	
 	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_position, false)
 	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], Settings.attack_position, true)
