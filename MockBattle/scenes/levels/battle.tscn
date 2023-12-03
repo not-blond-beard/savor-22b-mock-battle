@@ -36,36 +36,36 @@ text = "[수비팀]"
 horizontal_alignment = 1
 
 [node name="defense_panel" type="Panel" parent="."]
-offset_left = 41.0
+offset_left = 40.0
 offset_top = 200.0
-offset_right = 938.0
-offset_bottom = 1006.0
+offset_right = 940.0
+offset_bottom = 1000.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u88d")
 
 [node name="back" type="Sprite2D" parent="defense_panel"]
-position = Vector2(7, 12)
+position = Vector2(20, 14)
 
 [node name="center" type="Sprite2D" parent="defense_panel"]
-position = Vector2(291.685, 14)
+position = Vector2(305, 14)
 
 [node name="front" type="Sprite2D" parent="defense_panel"]
-position = Vector2(561.054, 10)
+position = Vector2(610, 10)
 
 [node name="attack_panel" type="Panel" parent="."]
-offset_left = 976.0
+offset_left = 980.0
 offset_top = 200.0
-offset_right = 1873.0
-offset_bottom = 1008.0
+offset_right = 1880.0
+offset_bottom = 1000.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u88d")
 
 [node name="back" type="Sprite2D" parent="attack_panel"]
-position = Vector2(7, 12)
+position = Vector2(20, 14)
 
 [node name="center" type="Sprite2D" parent="attack_panel"]
-position = Vector2(323, 14)
+position = Vector2(305, 14)
 
 [node name="front" type="Sprite2D" parent="attack_panel"]
-position = Vector2(622, 10)
+position = Vector2(610, 14)
 
 [node name="attack_label" type="Label" parent="."]
 offset_left = 1758.0
@@ -86,6 +86,7 @@ offset_bottom = 172.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u88d")
 
 [node name="frame_label" type="Label" parent="main_panel"]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 10.0
 offset_right = 128.0
@@ -96,6 +97,7 @@ theme_override_font_sizes/font_size = 25
 text = "[현재 프레임]"
 
 [node name="frame" type="Label" parent="main_panel"]
+layout_mode = 0
 offset_left = 170.0
 offset_top = 10.0
 offset_right = 280.0
@@ -106,6 +108,7 @@ theme_override_font_sizes/font_size = 25
 text = "-"
 
 [node name="turn_label" type="Label" parent="main_panel"]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 49.0
 offset_right = 128.0
@@ -116,6 +119,7 @@ theme_override_font_sizes/font_size = 25
 text = "[현재 턴]"
 
 [node name="turn" type="Label" parent="main_panel"]
+layout_mode = 0
 offset_left = 130.0
 offset_top = 49.0
 offset_right = 283.0
