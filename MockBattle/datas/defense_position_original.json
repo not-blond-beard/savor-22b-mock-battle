@@ -1,0 +1,28 @@
+[
+    [
+        {
+            "type": character_type.JJAJANG,
+            "id": 1
+        }
+    ],
+    [
+        {
+            "type": character_type.JJAMBBONG,
+            "id": 2
+        },
+        {
+            "type": character_type.JJAMBBONG,
+            "id": 3
+        },
+    ],
+    [
+        {
+            "type": character_type.CAKE,
+            "id": 4
+        },
+        {
+            "type": character_type.JJAMBBONG,
+            "id": 5
+        },
+    ]
+]

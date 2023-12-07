@@ -19,12 +19,17 @@ config/icon="res://icon.png"
 
 Settings="*res://singletons/settings.gd"
 FrameCounter="*res://singletons/frame_counter.gd"
+GameData="*res://singletons/game_data.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="Mock Battle"
 
 [gui]
 
