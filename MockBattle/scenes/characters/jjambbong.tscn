@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/characters/jjambbong.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="3_e0dcl"]
-[ext_resource type="SpriteFrames" uid="uid://c7kwrxn1ii4u8" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_umbra.tres" id="3_xd12i"]
+[ext_resource type="SpriteFrames" uid="uid://crblbpanulhwa" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_umbra.tres" id="3_xd12i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ejj2"]
 bg_color = Color(1, 1, 1, 1)
