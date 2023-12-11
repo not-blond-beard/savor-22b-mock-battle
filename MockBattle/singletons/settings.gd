@@ -1,16 +1,5 @@
 extends Node2D
 
-
-var batch_settings = {
-	"defense": "",
-	"attack": "",
-}
-
-var command_settings = {
-	"defense": "",
-	"attack": ""
-}
-
 func get_batch_setting() -> Dictionary:
 	return batch_settings
 	
@@ -18,17 +7,30 @@ func get_command_settings() -> Dictionary:
 	return command_settings
 	
 func update_defense_batch_settings(setting: String):
-	batch_settings.defense = setting
+	batch_settings.defense = convert_floats_to_ints(JSON.parse_string(setting))
 	
 func update_attack_batch_settings(setting: String):
-	batch_settings.attack = setting
+	batch_settings.attack = convert_floats_to_ints(JSON.parse_string(setting))
 
 func update_defense_command_settings(setting: String):
-	command_settings.defense = setting
+	command_settings.defense = convert_floats_to_ints(JSON.parse_string(setting))
 
 func update_attack_command_settings(setting: String):
-	command_settings.attack = setting
+	command_settings.attack = convert_floats_to_ints(JSON.parse_string(setting))
 
+func convert_floats_to_ints(value):
+	if typeof(value) == TYPE_DICTIONARY:
+		for key in value.keys():
+			value[key] = convert_floats_to_ints(value[key])
+		return value
+	elif typeof(value) == TYPE_ARRAY:
+		for i in range(value.size()):
+			value[i] = convert_floats_to_ints(value[i])
+		return value
+	elif typeof(value) == TYPE_FLOAT:
+		return int(value)
+	else:
+		return value
 
 enum character_type {
 	JJAJANG,
@@ -52,36 +54,36 @@ enum SkillEffectType {
 const DEFENSE_TEAM_CODE: int = 1
 const ATTACK_TEAM_CODE: int = 2
 
-var defense_position = [
+var default_defense_position = [
 	[
 		{
-			"type": character_type.JJAJANG,
+			"type": "JJAJANG",
 			"id": 1
 		}
 	],
 	[
 		{
-			"type": character_type.JJAMBBONG,
+			"type": "JJAMBBONG",
 			"id": 2
 		},
 		{
-			"type": character_type.JJAMBBONG,
+			"type": "JJAMBBONG",
 			"id": 3
 		},
 	],
 	[
 		{
-			"type": character_type.CAKE,
+			"type": "CAKE",
 			"id": 4
 		},
 		{
-			"type": character_type.JJAMBBONG,
+			"type": "JJAMBBONG",
 			"id": 5
 		},
 	]
 ]
 
-var defense_command = [
+var default_defense_command = [
 	{
 		"id": 1,
 		"skill_id": 1
@@ -139,36 +141,36 @@ var defense_command = [
 	},
 ]
 
-var attack_position = [
+var default_attack_position = [
 	[
 		{
-			"type": character_type.CAKE,
+			"type": "CAKE",
 			"id": 6
 		},
 		{
-			"type": character_type.MILK_SHAKE,
+			"type": "MILK_SHAKE",
 			"id": 7
 		},
 		{
-			"type": character_type.JJAJANG,
+			"type": "JJAJANG",
 			"id": 8
 		}
 	],
 	[
 		{
-			"type": character_type.JJAJANG,
+			"type": "JJAJANG",
 			"id": 9
 		}
 	],
 	[
 		{
-			"type": character_type.JJAMBBONG,
+			"type": "JJAMBBONG",
 			"id": 10
 		},
 	]
 ]
 
-var attack_command = [
+var default_attack_command = [
 	{
 		"id": 6,
 		"skill_id": 1
@@ -211,3 +213,13 @@ var attack_command = [
 	}
 ]
 
+
+var batch_settings = {
+	"defense": default_defense_position,
+	"attack": default_attack_position,
+}
+
+var command_settings = {
+	"defense": default_defense_command,
+	"attack": default_attack_command
+}
