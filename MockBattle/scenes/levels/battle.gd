@@ -8,8 +8,9 @@ var attack_team: BattleTeam
 signal game_turn_changed(current_turn)
 
 func _ready():
-	defense_team = BattleTeam.new(Settings.DEFENSE_TEAM_CODE, Settings.defense_command, game_turn_changed)
-	attack_team = BattleTeam.new(Settings.ATTACK_TEAM_CODE, Settings.attack_command, game_turn_changed)
+	var command_setting = Settings.get_command_settings()
+	defense_team = BattleTeam.new(Settings.DEFENSE_TEAM_CODE, command_setting["defense"], game_turn_changed)
+	attack_team = BattleTeam.new(Settings.ATTACK_TEAM_CODE, command_setting["attack"], game_turn_changed)
 	
 	defense_team.set_func_get_enemies(attack_team.get_instance_map)
 	attack_team.set_func_get_enemies(defense_team.get_instance_map)
@@ -85,8 +86,9 @@ func batch_characters_at_areas():
 	var attack_center_area = $attack_panel/center
 	var attack_back_area = $attack_panel/back
 	
-	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], Settings.defense_position, false)
-	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], Settings.attack_position, true)
+	var batch_setting = Settings.get_batch_setting()
+	defense_team.batch_characters([defnse_front_area, defnse_center_area, defnse_back_area], batch_setting["defense"], false)
+	attack_team.batch_characters([attack_front_area, attack_center_area, attack_back_area], batch_setting["attack"], true)
 	
 
 func get_winner_team_code() -> int:

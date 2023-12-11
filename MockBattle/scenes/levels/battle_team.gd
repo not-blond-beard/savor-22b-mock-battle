@@ -102,7 +102,7 @@ func batch_characters(areas: Array, batches: Array, flip: bool):
 		var current_y_position = 0
 
 		for character in characters:
-			var food: Player = GameHelper.get_food_instance(character.type)
+			var food: Player = GameHelper.get_food_instance(Settings.character_type.get(character.type))
 			_instance_map[character.id] = InstanceMap.new(i, food)
 			
 			food.set_team(team_code)
