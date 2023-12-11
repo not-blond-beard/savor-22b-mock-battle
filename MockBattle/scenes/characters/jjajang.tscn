@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/characters/jjajang.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="3_hyfi5"]
-[ext_resource type="SpriteFrames" uid="uid://crpgvrlnhx3ot" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_city.tres" id="3_t6myi"]
+[ext_resource type="SpriteFrames" uid="uid://cvlg18t588bcc" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_city.tres" id="3_t6myi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kesew"]
 bg_color = Color(1, 1, 1, 1)

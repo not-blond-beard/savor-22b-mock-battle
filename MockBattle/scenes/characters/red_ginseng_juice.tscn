@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cl5jy16j6rmsy"]
 
 [ext_resource type="Script" path="res://scenes/characters/red_ginseng_juice.gd" id="1_ocl8q"]
-[ext_resource type="SpriteFrames" uid="uid://cnc7glwne5717" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_gol.tres" id="3_0fhjj"]
+[ext_resource type="SpriteFrames" uid="uid://cbp7pb6h0aulv" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_gol.tres" id="3_0fhjj"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3_c3s6j"]
 
 [node name="food" type="Area2D"]

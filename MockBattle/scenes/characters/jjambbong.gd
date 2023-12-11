@@ -20,6 +20,17 @@ func skill_1(team, enemies, turn, meta):
 
 	var targets = get_foods_at_selected_area(1, enemies)
 	var target = self.get_random_player(targets)
+	
+	var skill1_effect = preload("res://scenes/skill/jjambbong_skill1.tscn").instantiate()
+	
+	var panel = target.get_node("Panel")
+	var panel_center: Vector2 = panel.size / 2
+	
+	skill1_effect.position = panel_center - panel.get_viewport().canvas_transform.origin
+
+	panel.add_child(skill1_effect)
+	skill1_effect.get_node("AnimatedSprite2D").frame = 0
+	skill1_effect.get_node("AnimatedSprite2D").play()
 		
 	target.take_damage(calculate_inflicted_damage(30), skill_1_settings.target_direction)
 	target.plus_damage_frame(3)
