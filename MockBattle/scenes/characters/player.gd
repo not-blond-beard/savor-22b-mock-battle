@@ -213,6 +213,8 @@ func take_damage(damage: int, position: int):
 	
 func check_activate_status_effect() -> bool:
 	if GameHelper.is_probability_success(resistance):
+		self.show_character_info_message("낮은 확률로 스킬을 무효화 했습니다.")
+		
 		return false
 		
 	return true
@@ -232,16 +234,32 @@ func toggle_stun(toggle: bool) -> bool:
 	
 	return stun
 	
+func _show_damage_frame_text(damage_frame: int):
+	var damage_frame_label = $character_info/damage_frame_label
+	
+	damage_frame_label.text = "<데미지 프레임: {0}>".format([damage_frame])
+	
+	damage_frame_label.visible = true
+	
+func _hide_damage_frame_text():
+	var damage_frame_label = $character_info/damage_frame_label
+	
+	damage_frame_label.visible = false
+	
 func plus_damage_frame(_damage_frame: int) -> bool:
 	if !check_activate_status_effect():
 		return false
 		
 	damage_frame += _damage_frame
 	
+	_show_damage_frame_text(damage_frame)
+	
 	return true
 	
 func remove_damage_frame():
 	damage_frame = 0
+	
+	_hide_damage_frame_text()
 	
 func skill_1(team, enemies, turn, meta):
 	_show_skill_info(1, skill_1_settings.description)
