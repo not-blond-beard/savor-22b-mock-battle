@@ -2,21 +2,17 @@
 
 [ext_resource type="Script" path="res://scenes/characters/kung_pao_chicken.gd" id="1_dwtwb"]
 [ext_resource type="SpriteFrames" uid="uid://den5ja0mr2fev" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_skurge.tres" id="2_11sjg"]
-[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_76hns"]
+[ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="3_6dkmg"]
 
 [node name="food" type="Area2D"]
 script = ExtResource("1_dwtwb")
 
-[node name="health_bar" parent="." instance=ExtResource("2_76hns")]
-offset_left = 9.0
-offset_top = 0.0
-offset_right = 9.0
-offset_bottom = 0.0
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, 0)
+position = Vector2(34, 17)
 scale = Vector2(1.8, 1.8)
 sprite_frames = ExtResource("2_11sjg")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(40.7143, 40)
+
+[node name="character_info" parent="." instance=ExtResource("3_6dkmg")]

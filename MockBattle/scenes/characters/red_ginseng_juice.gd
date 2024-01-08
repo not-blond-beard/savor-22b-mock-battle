@@ -4,14 +4,17 @@ func _ready():
 	set_health(50)
 	
 	food_name = "홍삼즙"
+	food_type = "쓴맛"
+	
+	_show_info()
 	
 	defense = 0
 	resistance = 0
 	evasion = 50
 	critical_chance = 0
 	
-	skill_1_settings = SkillSettings.new(12, 6)
-	skill_2_settings = SkillSettings.new(10, 4)
+	skill_1_settings = SkillSettings.new("본인의 회피력을 30 증가시킵니다.", 12, 6)
+	skill_2_settings = SkillSettings.new("단일 공격에 대한 공격을 모두 대신 맞아줍니다", 10, 4)
 	
 func skill_1(team, enemies, turn, meta):
 	# 스킬 1 (발동 12, 6턴 지속)

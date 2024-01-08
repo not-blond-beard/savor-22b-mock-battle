@@ -4,14 +4,17 @@ func _ready():
 	set_health(80)
 	
 	food_name = "마라샹궈"
+	food_type = "짠맛"
+	
+	_show_info()
 	
 	defense = 10
 	resistance = 40
 	evasion = 30
 	critical_chance = 40
 	
-	skill_1_settings = SkillSettings.new(10, 3)
-	skill_2_settings = SkillSettings.new(18, -1, 1)
+	skill_1_settings = SkillSettings.new("체력이 가장 낮은 음식 하나에게 데미지 10과 방어력 감소 10을 부여합니다.", 10, 3)
+	skill_2_settings = SkillSettings.new("체력이 가장 낮은 음식 하나에게 데미지 50 줍니다.", 18, -1, 1)
 	
 
 func skill_1(team, enemies, turn, meta):

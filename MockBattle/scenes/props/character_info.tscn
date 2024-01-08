@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c32kjqcsfmoqh"]
+[gd_scene load_steps=4 format=3 uid="uid://c32kjqcsfmoqh"]
 
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_3rkqd"]
+[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_45sdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxg4j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.196078, 0.141176, 1)
 
 [node name="character_info" type="Control"]
 layout_mode = 3
@@ -8,71 +17,70 @@ anchors_preset = 0
 offset_top = -1.0
 offset_bottom = -1.0
 
+[node name="target_highlight" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxg4j")
+
+[node name="label" type="Label" parent="target_highlight"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 33.0
+offset_right = 221.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0.196078, 0.141176, 1)
+theme_override_font_sizes/font_size = 15
+text = "<target>"
+
 [node name="id_label" type="Label" parent="."]
 layout_mode = 2
-offset_left = 7.0
-offset_top = 13.0
-offset_right = 41.0
-offset_bottom = 41.0
+offset_left = 19.0
+offset_top = 7.0
+offset_right = 148.0
+offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
 theme_override_font_sizes/font_size = 15
-text = "[ID]"
+text = "[아이디] 캐릭터 이름"
+horizontal_alignment = 1
 
-[node name="id" type="Label" parent="."]
+[node name="stun_label" type="Label" parent="."]
+visible = false
 layout_mode = 2
-offset_left = 46.0
-offset_top = 12.0
-offset_right = 102.0
-offset_bottom = 40.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_3rkqd")
-theme_override_font_sizes/font_size = 15
-text = "-"
-
-[node name="name_label" type="Label" parent="."]
-layout_mode = 2
-offset_left = 7.0
-offset_top = 37.0
-offset_right = 67.0
-offset_bottom = 65.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 154.0
+offset_top = 29.0
+offset_right = 202.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
 theme_override_font_sizes/font_size = 15
-text = "[이름]"
+text = "<기절>"
 
-[node name="name" type="Label" parent="."]
+[node name="health_bar" parent="." instance=ExtResource("2_45sdg")]
 layout_mode = 2
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 131.0
-offset_bottom = 66.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_3rkqd")
-theme_override_font_sizes/font_size = 15
-text = "-"
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 177.0
+offset_bottom = 69.0
 
-[node name="type_label" type="Label" parent="."]
+[node name="skill_noti" type="Panel" parent="."]
+visible = false
 layout_mode = 2
-offset_left = 7.0
-offset_top = 63.0
-offset_right = 67.0
-offset_bottom = 91.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
-theme_override_fonts/font = ExtResource("1_3rkqd")
-theme_override_font_sizes/font_size = 15
-text = "[속성]"
+offset_left = 1.0
+offset_top = 155.0
+offset_right = 235.0
+offset_bottom = 237.0
 
-[node name="type" type="Label" parent="."]
-layout_mode = 2
-offset_left = 65.0
-offset_top = 63.0
-offset_right = 119.0
-offset_bottom = 91.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_3rkqd")
-theme_override_font_sizes/font_size = 15
-text = "-"
+[node name="label" type="Label" parent="skill_noti"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 233.0
+offset_bottom = 83.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

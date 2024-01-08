@@ -4,14 +4,17 @@ func _ready():
 	set_health(80)
 	
 	food_name = "꿔바로우"
+	food_type = "신맛"
+	
+	_show_info()
 	
 	defense = 30
 	resistance = 20
 	evasion = 0
 	critical_chance = 20
 	
-	skill_1_settings = SkillSettings.new(15, -1)
-	skill_2_settings = SkillSettings.new(15, -1, 1)
+	skill_1_settings = SkillSettings.new("모든 상대에게 데미지 20을 줍니다.", 15, -1)
+	skill_2_settings = SkillSettings.new("모든 상대에게 데미지 10을 줍니다.", 15, -1, 1)
 
 func skill_1(team, enemies, turn, meta):
 	# 스킬 1 (발동 15)

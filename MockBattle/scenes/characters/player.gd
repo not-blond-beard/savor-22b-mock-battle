@@ -7,6 +7,7 @@ class_name Player
 var _team: int
 var _id: int
 var _health: int
+var _max_health: int
 # 체력 
 @export var defense: int
 # 방어력
@@ -18,6 +19,8 @@ var _health: int
 # 치명타 확률
 @export var food_name: String
 # 음식 이름
+@export var food_type: String
+# 음식 속성 (짠맛, 단맛, ...)
 
 @export var damage_frame: int
 # 데미지 프레임
@@ -63,10 +66,10 @@ func _on_turn_changed(next_turn: int):
 func add_skill_effect(skill: SkillEffect):
 	skill_effect.append(skill)
 	
-func set_health_text(health: int):
-	var health_text = $health_bar/health_container/health
+func set_health_info(health: int):
+	var health_text = $character_info/health_bar
 	
-	health_text.text = str(health)
+	health_text.set_progress(_max_health, health)
 
 func set_team(team: int):
 	_team = team
@@ -89,16 +92,19 @@ func add_health(health: int):
 func _death():
 	_health = 0
 	
-	set_health_text(0)
+	set_health_info(0)
 	hide()
 	
 	
 func set_health(health: int):
+	if _max_health == 0:
+		_max_health = health
+	
 	if health <= 0:
 		return _death()
 		
 	_health = health
-	set_health_text(_health)
+	set_health_info(_health)
 	
 
 func get_health():
@@ -149,6 +155,22 @@ func _calculate_final_received_damage(origin_damage: int, positiion: int) -> int
 	var minus_damage = GameHelper.calculate_percentage(origin_damage, result_defense)
 	
 	return origin_damage - minus_damage
+	
+func _show_info():
+	var label = $character_info/id_label
+	
+	label.text = "[{0}][{1}] {2}".format([food_type, str(get_id()), food_name])
+			
+func _show_skill_info(skill_type: int, description: String):
+	var container = $character_info/skill_noti
+	var label = $character_info/skill_noti/label
+	
+	label.text = "[Skill {0}]을(를) 시전했다.\n{1}".format([str(skill_type), description])
+	container.show()
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	container.hide()
 
 func play_special_animation(animation: String):
 	_animated_sprite.play(animation)
@@ -161,8 +183,20 @@ func _on_animation_finished():
 		
 	_animated_sprite.play("idle")
 	
+func show_hit_info(damage: int):
+	var highlight = $character_info/target_highlight
+	
+	highlight.show()
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	highlight.hide()
+	
+	
 func take_damage(damage: int, position: int):
 	var final_damange := _calculate_final_received_damage(damage, position)
+	
+	show_hit_info(final_damange)
 	
 	if final_damange <= 0:
 		return get_health()
@@ -178,11 +212,18 @@ func check_activate_status_effect() -> bool:
 		
 	return true
 	
+func update_stun_text(toggle: bool): 
+	var label = $character_info/stun_label
+	
+	label.visible = toggle
+	
 func toggle_stun(toggle: bool) -> bool:
 	if toggle and !check_activate_status_effect():
 		return false
 		
 	stun = toggle
+	
+	update_stun_text(stun)
 	
 	return stun
 	
@@ -198,9 +239,11 @@ func remove_damage_frame():
 	damage_frame = 0
 	
 func skill_1(team, enemies, turn, meta):
+	_show_skill_info(1, skill_1_settings.description)
 	play_special_animation("attack")
 	
 func skill_2(team, enemies, turn, meta):
+	_show_skill_info(2, skill_2_settings.description)
 	play_special_animation("attack")
 	
 func skill_guard(team, enemies, turn, meta):

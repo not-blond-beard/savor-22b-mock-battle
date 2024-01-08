@@ -5,6 +5,9 @@ func _ready():
 	set_health(150)
 	
 	food_name = "어묵볶음"
+	food_type = "짠맛"
+	
+	_show_info()
 	
 	defense = 0
 	resistance = 20

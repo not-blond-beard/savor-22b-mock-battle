@@ -18,7 +18,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Settings="*res://singletons/settings.gd"
-FrameCounter="*res://singletons/frame_counter.gd"
 
 [display]
 

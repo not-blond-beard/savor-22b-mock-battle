@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name FrameCounter
+
 var frame: int = 0
 var frame_disabled: bool = true
 

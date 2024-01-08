@@ -6,14 +6,17 @@ func _ready():
 	set_health(100)
 	
 	food_name = "밀크쉐이크"
+	food_type = "단맛"
+	
+	_show_info()
 	
 	defense = 10
 	resistance = 0
 	evasion = 0
 	critical_chance = 0
 	
-	skill_1_settings = SkillSettings.new(5, -1)
-	skill_2_settings = SkillSettings.new(25, -1, 1)
+	skill_1_settings = SkillSettings.new("다음 시전되는 스킬 2의 공격력을 10 증가시킵니다.", 5, -1)
+	skill_2_settings = SkillSettings.new("모든 상대에게 데미지 30을 줍니다.", 25, -1, 1)
 	
 	is_skill_effect_enable = false
 

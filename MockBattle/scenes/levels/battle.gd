@@ -5,6 +5,8 @@ var _game_turn: int = 0
 var defense_team: BattleTeam
 var attack_team: BattleTeam
 
+var frame_counter: FrameCounter
+
 signal game_turn_changed(current_turn)
 
 func _ready():
@@ -15,9 +17,13 @@ func _ready():
 	defense_team.set_func_get_enemies(attack_team.get_instance_map)
 	attack_team.set_func_get_enemies(defense_team.get_instance_map)
 	
-	FrameCounter.frame_changed.connect(_on_frame_changed)
-	FrameCounter.frame_changed.connect(_update_frame_text)
-	FrameCounter.start_frame()
+	frame_counter = FrameCounter.new()
+	
+	add_child(frame_counter)
+	
+	frame_counter.frame_changed.connect(_on_frame_changed)
+	frame_counter.frame_changed.connect(_update_frame_text)
+	frame_counter.start_frame()
 	
 	batch_characters_at_areas()
 
@@ -61,7 +67,7 @@ func _update_frame_text(frame: int):
 	
 func _on_frame_changed(frame):
 	if check_game_end():
-		FrameCounter.stop_frame()
+		frame_counter.stop_frame()
 		return
 		
 	var defense_fire_skill: bool = defense_team.on_frame_changed_fire_skill(frame, get_game_turn())
@@ -69,7 +75,7 @@ func _on_frame_changed(frame):
 	
 	if defense_fire_skill or attack_fire_skill:
 		increase_game_turn()
-		FrameCounter.pause_frame()
+		frame_counter.pause_frame()
 		
 	if defense_fire_skill:
 		defense_team.clear_guard()

@@ -4,14 +4,17 @@ func _ready():
 	set_health(225)
 	
 	food_name = "짬뽕"
+	food_type = "매운맛"
 	
 	defense = 30
 	resistance = 40
 	evasion = 0
 	critical_chance = 0
 	
-	skill_1_settings = SkillSettings.new(10, -1)
-	skill_2_settings = SkillSettings.new(15, 2)
+	_show_info()
+	
+	skill_1_settings = SkillSettings.new("1열에 있는 음식 1개에게 데미지 30을 주고 손해프레임 3을 줍니다", 10, -1)
+	skill_2_settings = SkillSettings.new("모든 상대에게 5데미지를 주고 방어력을 10 깎습니다.", 15, 2)
 	
 func skill_1(team, enemies, turn, meta):
 	# 스킬 1 (발동 10)
@@ -23,17 +26,16 @@ func skill_1(team, enemies, turn, meta):
 	
 	var skill1_effect = preload("res://scenes/skill/jjambbong_skill1.tscn").instantiate()
 	
-	var panel = target.get_node("Panel")
-	var panel_center: Vector2 = panel.size / 2
+	var animated_sprite = target.get_node("AnimatedSprite2D")
 	
-	skill1_effect.position = panel_center - panel.get_viewport().canvas_transform.origin
-
-	panel.add_child(skill1_effect)
+	target.add_child(skill1_effect)
+	
+	target.take_damage(calculate_inflicted_damage(30), skill_1_settings.target_direction)
+	target.plus_damage_frame(3)
+	
 	skill1_effect.get_node("AnimatedSprite2D").frame = 0
 	skill1_effect.get_node("AnimatedSprite2D").play()
 		
-	target.take_damage(calculate_inflicted_damage(30), skill_1_settings.target_direction)
-	target.plus_damage_frame(3)
 		
 
 func skill_2(team, enemies, turn, meta):

@@ -23,7 +23,7 @@ static func get_skill(food: Player, skill_id: int):
 static func get_skill_settings(food: Player, skill_id: int):
 	match skill_id:
 		0: 
-			return SkillSettings.new(0)
+			return SkillSettings.new("가드", 0)
 		1:
 			return food.skill_1_settings
 		2:
