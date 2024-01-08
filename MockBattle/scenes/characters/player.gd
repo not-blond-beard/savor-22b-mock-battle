@@ -160,17 +160,22 @@ func _show_info():
 	var label = $character_info/id_label
 	
 	label.text = "[{0}][{1}] {2}".format([food_type, str(get_id()), food_name])
-			
-func _show_skill_info(skill_type: int, description: String):
+		
+func show_character_info_message(message: String):
 	var container = $character_info/skill_noti
 	var label = $character_info/skill_noti/label
 	
-	label.text = "[Skill {0}]을(를) 시전했다.\n{1}".format([str(skill_type), description])
+	label.text = message
+	
 	container.show()
 	
 	await get_tree().create_timer(2.0).timeout
 	
 	container.hide()
+		
+func _show_skill_info(skill_type: int, description: String):
+	show_character_info_message("[Skill {0}]을(를) 시전했다.\n{1}".format([str(skill_type), description]))
+	
 
 func play_special_animation(animation: String):
 	_animated_sprite.play(animation)
