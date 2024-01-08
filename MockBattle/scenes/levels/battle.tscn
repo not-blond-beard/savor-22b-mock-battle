@@ -58,13 +58,13 @@ offset_right = 1880.0
 offset_bottom = 1000.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u88d")
 
-[node name="back" type="Sprite2D" parent="attack_panel"]
+[node name="front" type="Sprite2D" parent="attack_panel"]
 position = Vector2(20, 14)
 
 [node name="center" type="Sprite2D" parent="attack_panel"]
 position = Vector2(305, 14)
 
-[node name="front" type="Sprite2D" parent="attack_panel"]
+[node name="back" type="Sprite2D" parent="attack_panel"]
 position = Vector2(610, 14)
 
 [node name="attack_label" type="Label" parent="."]

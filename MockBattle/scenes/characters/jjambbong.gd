@@ -21,7 +21,7 @@ func skill_1(team, enemies, turn, meta):
 	# 1열에 있는 음식 1개에게 데미지 30을 주고 손해프레임 3을 줍니다.
 	super(team, enemies, turn, meta)
 
-	var targets = get_foods_at_selected_area(1, enemies)
+	var targets = get_foods_at_selected_area(0, enemies)
 	var target = self.get_random_player(targets)
 	
 	var skill1_effect = preload("res://scenes/skill/jjambbong_skill1.tscn").instantiate()

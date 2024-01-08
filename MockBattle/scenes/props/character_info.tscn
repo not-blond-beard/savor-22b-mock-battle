@@ -21,7 +21,7 @@ offset_bottom = -1.0
 visible = false
 layout_mode = 0
 offset_right = 223.0
-offset_bottom = 59.0
+offset_bottom = 64.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxg4j")
 
 [node name="label" type="Label" parent="target_highlight"]
@@ -49,23 +49,35 @@ horizontal_alignment = 1
 
 [node name="stun_label" type="Label" parent="."]
 visible = false
-layout_mode = 2
-offset_left = 3.0
-offset_top = 29.0
-offset_right = 51.0
-offset_bottom = 57.0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 49.0
+offset_bottom = 53.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
 theme_override_font_sizes/font_size = 15
 text = "<기절>"
 
+[node name="damage_frame_label" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 38.0
+offset_top = 45.0
+offset_right = 150.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "<손해프레임 존재>"
+
 [node name="health_bar" parent="." instance=ExtResource("2_45sdg")]
 layout_mode = 2
-offset_left = 48.0
-offset_top = 29.0
-offset_right = 177.0
-offset_bottom = 69.0
+offset_left = 41.0
+offset_top = 26.0
+offset_right = 172.0
+offset_bottom = 44.0
 
 [node name="skill_noti" type="Panel" parent="."]
 visible = false
