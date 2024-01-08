@@ -85,6 +85,8 @@ func on_frame_changed_fire_skill(frame, turn):
 		food.deactive_guard()
 		
 	if fire_skill and food.stun:
+		food.show_character_info_message("기절로 인해 차례를 스킵합니다.")
+		
 		food.toggle_stun(false)
 		_update_skill_history(frame)
 	elif fire_skill:
