@@ -126,3 +126,6 @@ MockBattle/addons/**
 !MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_gol.tres
 !MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_wujin.tres
 !MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_harmony.tres
+
+!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_bladestorm.tres
+!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_f2_phoenixfire.tres
