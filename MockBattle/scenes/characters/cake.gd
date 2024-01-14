@@ -26,10 +26,14 @@ func skill_1(team, enemies, turn, meta):
 	super(team, enemies, turn, meta)
 	
 	var target = get_most_unheath_food(enemies)
+	
 	var result_target: Player = target.get_matching_character_to_tanking(enemies)
 	
 	if result_target:
 		result_target.take_damage(calculate_inflicted_damage(35), skill_1_settings.target_direction)
+		play_single_skill_animation(result_target)
+	
+	
 	
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 18)
@@ -41,3 +45,4 @@ func skill_2(team, enemies, turn, meta):
 	
 	for enemy in targets:
 		enemy.take_damage(calculate_inflicted_damage(15), skill_2_settings.target_direction)
+		play_single_skill_animation(enemy)

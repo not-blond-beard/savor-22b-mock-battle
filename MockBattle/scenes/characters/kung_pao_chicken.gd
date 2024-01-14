@@ -25,7 +25,9 @@ func skill_1(team, enemies, turn, meta):
 		var enemy: InstanceMap = enemies[key]
 		
 		enemy.instance_node.take_damage(20, skill_1_settings.target_direction)
-
+		
+	play_all_target_skill_animation(Settings.ATTACK_TEAM_CODE)
+	
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 15, 중단)
 	# 모든 상대에게 데미지 10을 줍니다.
@@ -36,3 +38,5 @@ func skill_2(team, enemies, turn, meta):
 		var enemy: InstanceMap = enemies[key]
 		
 		enemy.instance_node.take_damage(10, skill_2_settings.target_direction)
+		
+	play_all_target_skill_animation(Settings.ATTACK_TEAM_CODE)

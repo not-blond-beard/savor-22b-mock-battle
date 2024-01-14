@@ -26,7 +26,8 @@ func skill_1(team, enemies, turn, meta):
 	
 	for target in targets:
 		target.toggle_stun(true)
-	
+		play_single_skill_animation(target)
+		
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 12)
 	# 상대 1열에 있는 음식들에게 기절 상태이상을 부여합니다.
@@ -34,3 +35,4 @@ func skill_2(team, enemies, turn, meta):
 	
 	for target in targets:
 		target.toggle_stun(true)
+		play_single_skill_animation(target)
