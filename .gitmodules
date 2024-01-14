@@ -1,0 +1,3 @@
+[submodule "MockBattle/addons"]
+	path = MockBattle/addons
+	url = git@github.com:not-blond-beard/duelyst-animated-sprites-godot.git
