@@ -297,3 +297,28 @@ func get_most_unheath_food(instance_map):
 			target = food
 			
 	return target
+	
+func play_single_skill_animation(enemy):
+	var single_skill_effect = preload("res://scenes/skill/single_skill.tscn").instantiate()
+	enemy.add_child(single_skill_effect)
+	enemy.get_node("AnimatedSprite2D").frame = 0
+	enemy.get_node("AnimatedSprite2D").play()
+
+func play_all_target_skill_animation(team_code):
+	var all_target_skill_effect = preload("res://scenes/skill/all_target_skill.tscn").instantiate()
+	
+	var enemies_panel: Control
+	if _team == team_code:
+		enemies_panel = get_tree().get_root().get_node("Battle/defense_panel")
+	else:
+		enemies_panel = get_tree().get_root().get_node("Battle/attack_panel")
+	
+	var panel_center: Vector2 = enemies_panel.size / 2
+	panel_center = panel_center + Vector2(0, enemies_panel.global_position.y)
+		
+	all_target_skill_effect.position = panel_center - enemies_panel.get_viewport().canvas_transform.origin
+
+	enemies_panel.add_child(all_target_skill_effect)
+	all_target_skill_effect.get_node("AnimatedSprite2D").frame = 0
+	all_target_skill_effect.get_node("AnimatedSprite2D").play()
+

@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://mn6p18vopux6"]
 
-[ext_resource type="Script" path="res://scenes/skill/dispose.gd" id="1_mooys"]
-[ext_resource type="SpriteFrames" uid="uid://c4n46jvsnjumo" path="res://addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_f2_phoenixfire.tres" id="1_yntgq"]
+[ext_resource type="Script" path="res://scenes/skill/dispose.gd" id="1_xwxu2"]
+[ext_resource type="SpriteFrames" uid="uid://c4n46jvsnjumo" path="res://addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_f2_phoenixfire.tres" id="2_y175w"]
 
 [node name="jjambbong_skill2" type="Node2D"]
 z_index = 1
-script = ExtResource("1_mooys")
+script = ExtResource("1_xwxu2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(2.08165e-12, -280)
 scale = Vector2(4, 4)
-sprite_frames = ExtResource("1_yntgq")
+sprite_frames = ExtResource("2_y175w")
 animation = &"phoenixfire"
 autoplay = "phoenixfire"
 frame = 37

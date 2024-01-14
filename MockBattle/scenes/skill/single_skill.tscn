@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b810bninehx60"]
+
+[ext_resource type="Script" path="res://scenes/skill/dispose.gd" id="1_6g40r"]
+[ext_resource type="SpriteFrames" uid="uid://cfqmu0636b5fg" path="res://addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_bluewatersplash.tres" id="2_tlycy"]
+
+[node name="cake_single_skill" type="Node2D"]
+script = ExtResource("1_6g40r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(109, 132)
+scale = Vector2(2.35581, 2.34375)
+sprite_frames = ExtResource("2_tlycy")
+animation = &"bluewatersplash"
+autoplay = "bluewatersplash"

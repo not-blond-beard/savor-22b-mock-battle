@@ -46,3 +46,4 @@ func skill_2(team, enemies, turn, meta):
 		
 		enemy.instance_node.take_damage(damage, skill_2_settings.target_direction)
 	
+	play_all_target_skill_animation(Settings.ATTACK_TEAM_CODE)
