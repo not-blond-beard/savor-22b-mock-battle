@@ -112,17 +112,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/godot,visualstudiocode,macos,windows,linux
-
-# addons
-MockBattle/addons/**
-
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_grym.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_city.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_umbra.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_skurge.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_legion.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_kane.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_malyk.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_gol.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_wujin.tres
-!MockBattle/addons/duelyst_animated_sprites/assets/spriteframes/units/boss_harmony.tres

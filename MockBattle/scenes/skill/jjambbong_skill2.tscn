@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mn6p18vopux6"]
 
 [ext_resource type="Script" path="res://scenes/skill/dispose.gd" id="1_mooys"]
-[ext_resource type="SpriteFrames" uid="uid://c3ajscw0p5a2a" path="res://addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_f2_phoenixfire.tres" id="1_yntgq"]
+[ext_resource type="SpriteFrames" uid="uid://c4n46jvsnjumo" path="res://addons/duelyst_animated_sprites/assets/spriteframes/fx/fx_f2_phoenixfire.tres" id="1_yntgq"]
 
 [node name="jjambbong_skill2" type="Node2D"]
 z_index = 1
