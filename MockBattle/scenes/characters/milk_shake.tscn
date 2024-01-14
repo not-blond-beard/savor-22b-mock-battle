@@ -13,7 +13,6 @@ scale = Vector2(1.69, 1.69)
 sprite_frames = ExtResource("2_hpph5")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.859338
 offset = Vector2(48, 27)
 
 [node name="character_info" parent="." instance=ExtResource("3_ui82a")]
