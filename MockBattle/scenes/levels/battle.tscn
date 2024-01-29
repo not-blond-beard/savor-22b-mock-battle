@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh533okqqrqoe"]
+[gd_scene load_steps=8 format=3 uid="uid://dh533okqqrqoe"]
 
 [ext_resource type="FontFile" uid="uid://d00vm0x0a7tly" path="res://sub_title.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/levels/battle.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://dc3svpklgyueu" path="res://scenes/misc/winner_alert.tscn" id="3_cvldv"]
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="3_dfujj"]
+[ext_resource type="PackedScene" uid="uid://gdcc02bceflq" path="res://scenes/props/command_panel.tscn" id="3_iajgw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u88d"]
 bg_color = Color(1, 1, 1, 1)
@@ -51,6 +52,9 @@ position = Vector2(305, 14)
 [node name="front" type="Sprite2D" parent="defense_panel"]
 position = Vector2(610, 14)
 
+[node name="command_panel" parent="defense_panel" instance=ExtResource("3_iajgw")]
+position = Vector2(378, 634)
+
 [node name="attack_panel" type="Panel" parent="."]
 offset_left = 980.0
 offset_top = 200.0
@@ -66,6 +70,9 @@ position = Vector2(305, 14)
 
 [node name="back" type="Sprite2D" parent="attack_panel"]
 position = Vector2(610, 14)
+
+[node name="command_panel" parent="attack_panel" instance=ExtResource("3_iajgw")]
+position = Vector2(380, 632)
 
 [node name="attack_label" type="Label" parent="."]
 offset_left = 1758.0
@@ -131,6 +138,7 @@ text = "-"
 
 [node name="winner_alert" parent="." instance=ExtResource("3_cvldv")]
 visible = false
+z_index = 1
 offset_left = 625.0
 offset_top = 331.0
 offset_right = 1325.0
