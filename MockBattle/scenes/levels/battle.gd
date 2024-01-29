@@ -26,6 +26,8 @@ func _ready():
 	frame_counter.start_frame()
 	
 	batch_characters_at_areas()
+	
+	_draw_command_list()
 
 func get_game_turn() -> int:
 	return _game_turn
@@ -82,6 +84,16 @@ func _on_frame_changed(frame):
 	
 	if attack_fire_skill:
 		attack_team.clear_guard()
+		
+func _draw_command_list():
+	var command_setting = Settings.get_command_settings()
+	
+	var defense_area = $defense_panel/command_panel
+	var attack_area = $attack_panel/command_panel
+	
+	defense_team.draw_command_list(command_setting["defense"], defense_area)
+	attack_team.draw_command_list(command_setting["attack"], attack_area)
+	
 	
 func batch_characters_at_areas():
 	var defnse_front_area = $defense_panel/front

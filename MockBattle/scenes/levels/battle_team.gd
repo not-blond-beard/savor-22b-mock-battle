@@ -10,6 +10,7 @@ var _latest_frame: int
 var _get_enemies: Callable
 var _instance_map: Dictionary
 var _turn_signal: Signal
+var _command_list_element: Node
 
 var team_code: int
 var is_over: bool
@@ -22,7 +23,6 @@ func _init(team: int, commands: Array, turn_signal: Signal):
 	_instance_map = {}
 	_latest_frame = 0
 	_turn_signal = turn_signal
-	
 	
 	team_code = team
 	is_over = false
@@ -53,6 +53,9 @@ func _check_fire_skill(current_frame: int, command, food):
 		return false
 	
 func _activate_command(command: Dictionary, turn):
+	var command_list = _command_list_element.scroll_to_element(_command_idx)
+	_command_list_element.change_command_count(len(_commands) - (_command_idx + 1))
+	
 	var food: Player = _instance_map[command.id].instance_node
 	var skill: Callable = GameHelper.get_skill(food, command.skill_id)
 	
@@ -95,7 +98,12 @@ func on_frame_changed_fire_skill(frame, turn):
 		
 		
 	return fire_skill
-
+	
+func draw_command_list(commands: Array, area):
+	area.draw_command_list(commands, get_instance_map())
+	
+	_command_list_element = area
+	
 func batch_characters(areas: Array, batches: Array, flip: bool):
 	var spacing = 250
 	for i in range(len(areas)):
