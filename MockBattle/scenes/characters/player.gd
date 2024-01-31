@@ -36,6 +36,14 @@ var skill_2_settings: SkillSettings
 
 var skill_effect: Array[SkillEffect]
 			
+var type_advantage: Dictionary = {
+	"짠맛": {"target": "단맛", "bonus": 10},
+	"단맛": {"target": "매운맛", "bonus": 10},
+	"매운맛": {"target": "신맛", "bonus": 10},
+	"신맛": {"target": "쓴맛", "bonus": 10},
+	"쓴맛": {"target": "짠맛", "bonus": 10}
+}
+			
 func deactive_guard():
 	guard_disabled = true
 	
@@ -125,14 +133,20 @@ func get_matching_character_to_tanking(team: Dictionary) -> Player:
 	return self
 
 # 상대방에게 공격을 입힐 때 사용할 데미지 계산
-func calculate_inflicted_damage(origin_damage: int) -> int:
+func calculate_inflicted_damage(origin_damage: int, enemy) -> int:
+	var total_damage = origin_damage
 	var critical = GameHelper.is_probability_success(critical_chance)
 	var add_damage := GameHelper.calculate_percentage(origin_damage, 40)
 	
 	if critical:
-		return origin_damage + add_damage
-	else:
-		return origin_damage
+		total_damage += add_damage
+	
+	var advantage_info = type_advantage[food_type]
+	if advantage_info and advantage_info["target"] == enemy.food_type:
+		var bonus_damage = GameHelper.calculate_percentage(origin_damage, advantage_info["bonus"])
+		total_damage += bonus_damage
+	
+	return total_damage
 	
 func _calculate_guard_received_defense(origin_damage: int, positiion: int) -> int:
 	if guard_disabled:
