@@ -36,7 +36,7 @@ func skill_1(team, enemies, turn, meta):
 	var result_target: Player = target.get_matching_character_to_tanking(enemies)
 	
 	if result_target:
-		result_target.take_damage(calculate_inflicted_damage(35), skill_1_settings.target_direction)
+		result_target.take_damage(calculate_inflicted_damage(35, result_target), skill_1_settings.target_direction)
 		result_target.defense += -10
 		result_target.add_skill_effect(effect)
 		play_single_skill_animation(result_target)
@@ -51,5 +51,5 @@ func skill_2(team, enemies, turn, meta):
 	var result_target: Player = target.get_matching_character_to_tanking(enemies)
 	
 	if result_target:
-		result_target.take_damage(calculate_inflicted_damage(50), skill_2_settings.target_direction)
+		result_target.take_damage(calculate_inflicted_damage(50, result_target), skill_2_settings.target_direction)
 		play_single_skill_animation(result_target)
