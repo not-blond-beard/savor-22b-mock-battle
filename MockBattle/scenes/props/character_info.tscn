@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c32kjqcsfmoqh"]
+[gd_scene load_steps=5 format=3 uid="uid://c32kjqcsfmoqh"]
 
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_3rkqd"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_45sdg"]
@@ -10,6 +10,14 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.196078, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3opi"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.705882, 1, 0, 1)
 
 [node name="character_info" type="Control"]
 layout_mode = 3
@@ -47,8 +55,30 @@ theme_override_font_sizes/font_size = 15
 text = "[아이디] 캐릭터 이름"
 horizontal_alignment = 1
 
+[node name="aggro" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 238.0
+offset_bottom = 243.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3opi")
+
+[node name="Label" type="Label" parent="aggro"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 3.0
+offset_right = 234.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.705882, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 15
+text = "<도발>"
+
 [node name="stun_label" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 1.0
 offset_top = 25.0
 offset_right = 49.0
