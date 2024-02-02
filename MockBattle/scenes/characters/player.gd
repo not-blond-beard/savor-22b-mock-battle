@@ -65,14 +65,26 @@ func _on_turn_changed(next_turn: int):
 		var end_turn: int = effect.started_turn + effect.persistent_turn
 		
 		if current_turn >= end_turn:
-			skill_effect.erase(effect)
+			remove_skill_effect(effect)
 			
 			if effect.type == Settings.SkillEffectType.CHANGED_PLAYER_STATUS:
 				init_player_status(effect)
 		
+		
+func toggle_aggro_message(toggle: bool):
+	$character_info/aggro.visible = toggle
 	
-func add_skill_effect(skill: SkillEffect):
-	skill_effect.append(skill)
+func remove_skill_effect(effect: SkillEffect):
+	skill_effect.erase(effect)
+	
+	if effect.type == Settings.SkillEffectType.PROTECT and effect.skill_owner_id == get_id():
+		toggle_aggro_message(false)
+	
+func add_skill_effect(effect: SkillEffect):
+	skill_effect.append(effect)
+	
+	if effect.type == Settings.SkillEffectType.PROTECT and effect.skill_owner_id == get_id():
+		toggle_aggro_message(true)
 	
 func set_health_info(health: int):
 	var health_text = $character_info/health_bar

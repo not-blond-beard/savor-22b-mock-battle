@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/levels/battle.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://dc3svpklgyueu" path="res://scenes/misc/winner_alert.tscn" id="3_cvldv"]
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="3_dfujj"]
-[ext_resource type="PackedScene" uid="uid://gdcc02bceflq" path="res://scenes/props/command_panel.tscn" id="3_iajgw"]
+[ext_resource type="PackedScene" path="res://scenes/props/command_panel.tscn" id="3_iajgw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u88d"]
 bg_color = Color(1, 1, 1, 1)
