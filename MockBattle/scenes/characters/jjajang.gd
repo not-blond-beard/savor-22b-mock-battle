@@ -28,12 +28,15 @@ func skill_1(team, enemies, turn, meta):
 		skill_1_settings.persistent_turn,
 		Settings.SkillEffectType.CHANGED_PLAYER_STATUS,
 		20,
-		"defense"
+		"defense",
+		" 방어력 +20"
 	)
 	self.defense += 20
 	self.add_skill_effect(
 		effect
 	)
+
+		
 	
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 10, 6턴 지속)

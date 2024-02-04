@@ -29,7 +29,8 @@ func skill_1(team, enemies, turn, meta):
 		skill_1_settings.persistent_turn,
 		Settings.SkillEffectType.CHANGED_PLAYER_STATUS,
 		-10,
-		"defense"
+		"defense",
+		" 방어력 -10"
 	)
 	
 	var target = get_most_unheath_food(enemies)

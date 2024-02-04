@@ -44,7 +44,8 @@ func skill_2(team, enemies, turn, meta):
 			skill_2_settings.persistent_turn,
 			Settings.SkillEffectType.CHANGED_PLAYER_STATUS,
 			-10,
-			"defense"
+			"defense",
+			" 방어력 -10"
 		)
 		
 		enemy.instance_node.take_damage(calculate_inflicted_damage(5, enemy.instance_node), skill_2_settings.target_direction)

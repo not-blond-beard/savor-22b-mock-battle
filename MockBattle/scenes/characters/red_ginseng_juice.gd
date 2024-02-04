@@ -19,22 +19,27 @@ func _ready():
 func skill_1(team, enemies, turn, meta):
 	# 스킬 1 (발동 12, 6턴 지속)
 	# 본인의 회피력을 30 증가시킵니다.
+	super(team, enemies, turn, meta)
+	
 	var effect = SkillEffect.new(
 		self.get_id(),
 		turn,
 		skill_1_settings.persistent_turn,
 		Settings.SkillEffectType.CHANGED_PLAYER_STATUS,
 		30,
-		"evasion"
+		"evasion",
+		" 회피력 +30"
 	)
 	self.evasion += 30
 	self.add_skill_effect(
 		effect
 	)
-	
+
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 10, 4턴 지속)
 	# 단일 공격에 대한 공격을 모두 대신 맞아줍니다 (수호)
+	super(team, enemies, turn, meta)
+	
 	var effect = SkillEffect.new(
 		self.get_id(),
 		turn,
