@@ -2,16 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/characters/red_ginseng_juice.gd" id="1_ocl8q"]
 [ext_resource type="SpriteFrames" uid="uid://cnc7glwne5717" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_gol.tres" id="3_0fhjj"]
-[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="3_c3s6j"]
+[ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="3_b2tw4"]
 
 [node name="food" type="Area2D"]
 script = ExtResource("1_ocl8q")
-
-[node name="health_bar" parent="." instance=ExtResource("3_c3s6j")]
-offset_left = 9.0
-offset_top = 0.0
-offset_right = 9.0
-offset_bottom = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.53674e-07, 0)
@@ -20,3 +14,5 @@ sprite_frames = ExtResource("3_0fhjj")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(40.7143, 40)
+
+[node name="character_info" parent="." instance=ExtResource("3_b2tw4")]

@@ -74,17 +74,27 @@ func _on_turn_changed(next_turn: int):
 func toggle_aggro_message(toggle: bool):
 	$character_info/aggro.visible = toggle
 	
+func remove_buff(message):
+	$character_info/buff_label.text = $character_info/buff_label.text.replace(message, "")
+	
+func add_buff_or_debuff(message):
+	$character_info/buff_label.text += message
+	
 func remove_skill_effect(effect: SkillEffect):
 	skill_effect.erase(effect)
 	
 	if effect.type == Settings.SkillEffectType.PROTECT and effect.skill_owner_id == get_id():
 		toggle_aggro_message(false)
+	else:
+		remove_buff(effect.skill_message)
 	
 func add_skill_effect(effect: SkillEffect):
 	skill_effect.append(effect)
 	
 	if effect.type == Settings.SkillEffectType.PROTECT and effect.skill_owner_id == get_id():
 		toggle_aggro_message(true)
+		
+	add_buff_or_debuff(effect.skill_message)
 	
 func set_health_info(health: int):
 	var health_text = $character_info/health_bar

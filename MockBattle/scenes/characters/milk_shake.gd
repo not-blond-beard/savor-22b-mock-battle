@@ -28,6 +28,8 @@ func skill_1(team, enemies, turn, meta):
 	
 	is_skill_effect_enable = true
 	
+	self.add_buff_or_debuff(" 스킬 2 +10")
+	
 		
 func skill_2(team, enemies, turn, meta):
 	# 스킬 2 (발동 25, 중단)
@@ -40,6 +42,7 @@ func skill_2(team, enemies, turn, meta):
 	if is_skill_effect_enable:
 		damage += 10
 		is_skill_effect_enable = false
+		remove_buff(" 스킬 2 +10")
 	
 	for key in enemies:
 		var enemy: InstanceMap = enemies[key]
