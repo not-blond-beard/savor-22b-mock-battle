@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c32kjqcsfmoqh"]
+[gd_scene load_steps=6 format=3 uid="uid://c32kjqcsfmoqh"]
 
 [ext_resource type="FontFile" uid="uid://rb827p6o1ltk" path="res://fonts/HakgyoansimSantteutdotumM.ttf" id="1_3rkqd"]
 [ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_45sdg"]
@@ -9,7 +9,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.196078, 0.141176, 1)
+border_color = Color(0.933333, 0.933333, 0.933333, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3opi"]
 bg_color = Color(1, 1, 1, 0)
@@ -19,41 +19,36 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.705882, 1, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uk4i8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0, 0, 1)
+
 [node name="character_info" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -1.0
-offset_bottom = -1.0
+offset_left = 1.0
+offset_right = 1.0
 
-[node name="target_highlight" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 223.0
-offset_bottom = 64.0
+[node name="outline" type="Panel" parent="."]
+offset_right = 241.0
+offset_bottom = 241.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxg4j")
-
-[node name="label" type="Label" parent="target_highlight"]
-layout_mode = 0
-offset_left = 159.0
-offset_top = 33.0
-offset_right = 221.0
-offset_bottom = 58.0
-theme_override_colors/font_color = Color(1, 0.196078, 0.141176, 1)
-theme_override_font_sizes/font_size = 15
-text = "<target>"
 
 [node name="id_label" type="Label" parent="."]
 layout_mode = 2
-offset_left = 19.0
+offset_left = 8.0
 offset_top = 7.0
-offset_right = 148.0
+offset_right = 162.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
 theme_override_font_sizes/font_size = 15
 text = "[아이디] 캐릭터 이름"
-horizontal_alignment = 1
 
 [node name="aggro" type="Panel" parent="."]
 visible = false
@@ -66,10 +61,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_f3opi")
 
 [node name="Label" type="Label" parent="aggro"]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 3.0
-offset_right = 234.0
-offset_bottom = 26.0
+offset_left = 192.0
+offset_top = 6.0
+offset_right = 232.0
+offset_bottom = 29.0
 theme_override_colors/font_color = Color(0.705882, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
@@ -79,10 +74,10 @@ text = "<도발>"
 [node name="stun_label" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 1.0
-offset_top = 25.0
-offset_right = 49.0
-offset_bottom = 53.0
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 58.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
@@ -92,10 +87,10 @@ text = "<기절>"
 [node name="damage_frame_label" type="Label" parent="."]
 visible = false
 layout_mode = 2
-offset_left = 38.0
-offset_top = 45.0
-offset_right = 150.0
-offset_bottom = 73.0
+offset_left = 119.0
+offset_top = 46.0
+offset_right = 231.0
+offset_bottom = 74.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
@@ -104,15 +99,15 @@ text = "<손해프레임 존재>"
 
 [node name="health_bar" parent="." instance=ExtResource("2_45sdg")]
 layout_mode = 2
-offset_left = 41.0
+offset_left = 9.0
 offset_top = 26.0
-offset_right = 172.0
+offset_right = 140.0
 offset_bottom = 44.0
 
 [node name="skill_noti" type="Panel" parent="."]
 visible = false
 layout_mode = 2
-offset_left = 1.0
+offset_left = 6.0
 offset_top = 126.0
 offset_right = 235.0
 offset_bottom = 236.0
@@ -129,9 +124,26 @@ autowrap_mode = 2
 
 [node name="buff_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 22.0
-offset_top = -14.0
-offset_right = 82.0
-offset_bottom = 12.0
+offset_left = 113.0
+offset_top = 22.0
+offset_right = 173.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0.454902, 0, 1)
 theme_override_font_sizes/font_size = 12
+
+[node name="target_highlight" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 241.0
+offset_bottom = 241.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uk4i8")
+
+[node name="label" type="Label" parent="target_highlight"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 214.0
+offset_right = 234.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(1, 0.196078, 0.141176, 1)
+theme_override_font_sizes/font_size = 15
+text = "<target>"
