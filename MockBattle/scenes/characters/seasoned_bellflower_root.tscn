@@ -1,20 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf4faooi6a3cj"]
 
-[ext_resource type="PackedScene" uid="uid://b3qxr885pjvvh" path="res://scenes/props/health_bar.tscn" id="2_qp5pf"]
+[ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="2_pjp83"]
 [ext_resource type="SpriteFrames" uid="uid://csnlul0fvhkdt" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_wujin.tres" id="3_2dcxt"]
 
 [node name="food" type="Area2D"]
 
-[node name="health_bar" parent="." instance=ExtResource("2_qp5pf")]
-offset_left = 9.0
-offset_top = 0.0
-offset_right = 9.0
-offset_bottom = 0.0
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, 0)
+position = Vector2(17, 19)
 scale = Vector2(1.8, 1.8)
 sprite_frames = ExtResource("3_2dcxt")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(40.7143, 40)
+
+[node name="character_info" parent="." instance=ExtResource("2_pjp83")]
