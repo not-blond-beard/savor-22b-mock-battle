@@ -9,6 +9,13 @@ static func calculate_percentage(original: int, percentage: int) -> float:
 	var difference = original * (float(percentage) / 100.0)
 	return difference
 
+static func get_skill_direction_label(direction: int):
+	match direction:
+		0:
+			return "하단"
+		1: 
+			return "중단"
+
 static func get_skill(food: Player, skill_id: int):
 	match skill_id:
 		0:

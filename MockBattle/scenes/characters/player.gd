@@ -208,9 +208,16 @@ func show_character_info_message(message: String):
 	await get_tree().create_timer(2.0).timeout
 	
 	container.hide()
+	
+func _show_guard_info(guard_direciton: int):
+	var direction = GameHelper.get_skill_direction_label(guard_direciton)
+	
+	show_character_info_message("[{0}] 방향으로 가드를 전환했습니다.".format([direction]))
 		
-func _show_skill_info(skill_type: int, description: String):
-	show_character_info_message("[Skill {0}]을(를) 시전했다.\n{1}".format([str(skill_type), description]))
+func _show_skill_info(skill_type: int, description: String, target_direction: int):
+	var direction = GameHelper.get_skill_direction_label(target_direction)
+	
+	show_character_info_message("[{0}] [Skill {1}]을(를) 시전했다.\n{2}".format([direction, str(skill_type), description]))
 	
 
 func play_special_animation(animation: String):
@@ -298,14 +305,15 @@ func remove_damage_frame():
 	_hide_damage_frame_text()
 	
 func skill_1(team, enemies, turn, meta):
-	_show_skill_info(1, skill_1_settings.description)
+	_show_skill_info(1, skill_1_settings.description, skill_1_settings.target_direction)
 	play_special_animation("attack")
 	
 func skill_2(team, enemies, turn, meta):
-	_show_skill_info(2, skill_2_settings.description)
+	_show_skill_info(2, skill_2_settings.description, skill_2_settings.target_direction)
 	play_special_animation("attack")
 	
 func skill_guard(team, enemies, turn, meta):
+	_show_guard_info(meta)
 	change_guard_position(meta)
 
 func get_is_enemy(target):
