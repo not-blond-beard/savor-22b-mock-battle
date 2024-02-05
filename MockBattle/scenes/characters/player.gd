@@ -44,14 +44,26 @@ var type_advantage: Dictionary = {
 	"쓴맛": {"target": "짠맛", "bonus": 10}
 }
 			
+func _show_guard_info(direction_text: String):
+	$character_info/guard_direction.text = "[가드: {0}]".format([direction_text])
+	
+func _show_guard_direction_info(direction: int):
+	_show_guard_info(GameHelper.get_skill_direction_label(direction))
+			
 func deactive_guard():
 	guard_disabled = true
+	
+	_show_guard_info("해제")
 	
 func active_guard():
 	guard_disabled = false
 	
+	_show_guard_direction_info(guard_position)
+	
 func change_guard_position(position: int): 
 	guard_position = position
+	
+	_show_guard_direction_info(guard_position)
 
 func init_player_status(effect: SkillEffect):
 	var origin_status: int = self.get(effect.target_stat)
@@ -196,6 +208,8 @@ func _show_info():
 	var label = $character_info/id_label
 	
 	label.text = "[{0}][{1}] {2}".format([food_type, str(get_id()), food_name])
+	
+	_show_guard_direction_info(guard_position)
 		
 func show_character_info_message(message: String):
 	var container = $character_info/skill_noti
@@ -208,9 +222,16 @@ func show_character_info_message(message: String):
 	await get_tree().create_timer(2.0).timeout
 	
 	container.hide()
+	
+func _show_guard_skill_info(guard_direciton: int):
+	var direction = GameHelper.get_skill_direction_label(guard_direciton)
+	
+	show_character_info_message("[{0}] 방향으로 가드를 전환했습니다.".format([direction]))
 		
-func _show_skill_info(skill_type: int, description: String):
-	show_character_info_message("[Skill {0}]을(를) 시전했다.\n{1}".format([str(skill_type), description]))
+func _show_skill_info(skill_type: int, description: String, target_direction: int):
+	var direction = GameHelper.get_skill_direction_label(target_direction)
+	
+	show_character_info_message("[{0}] [Skill {1}]을(를) 시전했다.\n{2}".format([direction, str(skill_type), description]))
 	
 
 func play_special_animation(animation: String):
@@ -298,14 +319,15 @@ func remove_damage_frame():
 	_hide_damage_frame_text()
 	
 func skill_1(team, enemies, turn, meta):
-	_show_skill_info(1, skill_1_settings.description)
+	_show_skill_info(1, skill_1_settings.description, skill_1_settings.target_direction)
 	play_special_animation("attack")
 	
 func skill_2(team, enemies, turn, meta):
-	_show_skill_info(2, skill_2_settings.description)
+	_show_skill_info(2, skill_2_settings.description, skill_2_settings.target_direction)
 	play_special_animation("attack")
 	
 func skill_guard(team, enemies, turn, meta):
+	_show_guard_skill_info(meta)
 	change_guard_position(meta)
 
 func get_is_enemy(target):
@@ -357,4 +379,3 @@ func play_all_target_skill_animation(team_code):
 	enemies_panel.add_child(all_target_skill_effect)
 	all_target_skill_effect.get_node("AnimatedSprite2D").frame = 0
 	all_target_skill_effect.get_node("AnimatedSprite2D").play()
-
