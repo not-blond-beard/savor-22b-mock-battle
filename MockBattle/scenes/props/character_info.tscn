@@ -71,13 +71,24 @@ theme_override_fonts/font = ExtResource("1_3rkqd")
 theme_override_font_sizes/font_size = 15
 text = "<도발>"
 
+[node name="guard_direction" type="Label" parent="."]
+offset_left = 116.0
+offset_top = 27.0
+offset_right = 176.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
+theme_override_fonts/font = ExtResource("1_3rkqd")
+theme_override_font_sizes/font_size = 12
+text = "[가드 방향]"
+
 [node name="stun_label" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 10.0
-offset_top = 47.0
-offset_right = 58.0
-offset_bottom = 75.0
+offset_left = 7.0
+offset_top = 46.0
+offset_right = 55.0
+offset_bottom = 74.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/font = ExtResource("1_3rkqd")
@@ -124,9 +135,9 @@ autowrap_mode = 2
 
 [node name="buff_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 113.0
+offset_left = 174.0
 offset_top = 22.0
-offset_right = 173.0
+offset_right = 234.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0.454902, 0, 1)
 theme_override_font_sizes/font_size = 12
