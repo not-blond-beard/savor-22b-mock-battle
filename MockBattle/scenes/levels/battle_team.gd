@@ -130,11 +130,14 @@ func batch_characters(areas: Array, batches: Array, flip: bool):
 			current_y_position += spacing
 
 
-func get_team_health() -> int:
-	var health = 0
+func get_team_health() -> float:
+	var health: float = 0.0
+	var max_health: float = 0.0
 	
 	for key in _instance_map:
 		var food: Player = _instance_map[key].instance_node
 		health += food.get_health()
+		max_health += food.get_max_health()
+	var result = health / max_health * 100
 	
-	return health
+	return result

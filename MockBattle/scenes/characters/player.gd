@@ -152,6 +152,9 @@ func set_health(health: int):
 func get_health():
 	return _health
 	
+func get_max_health():
+	return _max_health
+	
 func get_random_player(targets: Array):
 	if targets.size() > 0:
 		var random_index = randi() % targets.size()

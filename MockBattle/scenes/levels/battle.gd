@@ -110,8 +110,8 @@ func batch_characters_at_areas():
 	
 
 func get_winner_team_code() -> int:
-	var defense_team_total_health: int = defense_team.get_team_health()
-	var attack_team_total_healath: int = attack_team.get_team_health()
+	var defense_team_total_health: float = defense_team.get_team_health()
+	var attack_team_total_healath: float = attack_team.get_team_health()
 			
 	if defense_team_total_health > attack_team_total_healath:
 		return Settings.DEFENSE_TEAM_CODE
