@@ -3,7 +3,7 @@ extends "res://scenes/characters/player.gd"
 
 
 func _ready():
-	set_health(180)
+	set_health(100)
 	
 	food_name = "케이크"
 	food_type = "단맛"

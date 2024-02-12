@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4faooi6a3cj"]
+[gd_scene load_steps=4 format=3 uid="uid://bf4faooi6a3cj"]
 
+[ext_resource type="Script" path="res://scenes/characters/seasoned_bellflower_root.gd" id="1_i7mr4"]
 [ext_resource type="PackedScene" uid="uid://c32kjqcsfmoqh" path="res://scenes/props/character_info.tscn" id="2_pjp83"]
 [ext_resource type="SpriteFrames" uid="uid://csnlul0fvhkdt" path="res://addons/duelyst_animated_sprites/assets/spriteframes/units/boss_wujin.tres" id="3_2dcxt"]
 
 [node name="food" type="Area2D"]
+script = ExtResource("1_i7mr4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(17, 19)

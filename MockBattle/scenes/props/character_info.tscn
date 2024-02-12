@@ -34,6 +34,7 @@ offset_left = 1.0
 offset_right = 1.0
 
 [node name="outline" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 241.0
 offset_bottom = 241.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxg4j")
@@ -72,6 +73,7 @@ theme_override_font_sizes/font_size = 15
 text = "<도발>"
 
 [node name="guard_direction" type="Label" parent="."]
+layout_mode = 0
 offset_left = 116.0
 offset_top = 27.0
 offset_right = 176.0
