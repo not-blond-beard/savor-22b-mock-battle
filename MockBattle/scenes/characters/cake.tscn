@@ -6,15 +6,6 @@
 
 [node name="food" type="Area2D"]
 script = ExtResource("2")
-defense = null
-resistance = null
-evasion = null
-critical_chance = null
-food_name = null
-damage_frame = null
-stun = null
-guard_disabled = null
-guard_position = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(36, 58)

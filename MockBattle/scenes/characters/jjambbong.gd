@@ -13,7 +13,7 @@ func _ready():
 	
 	_show_info()
 	
-	skill_1_settings = SkillSettings.new("1열에 있는 음식 1개에게 데미지 30을 주고 손해프레임 3을 줍니다", 10, -1)
+	skill_1_settings = SkillSettings.new("1열에 있는 음식 1개에게 데미지 40을 주고 손해프레임 3을 줍니다", 10, -1)
 	skill_2_settings = SkillSettings.new("모든 상대에게 5데미지를 주고 방어력을 10 깎습니다.", 15, 2)
 	
 func skill_1(team, enemies, turn, meta):
@@ -24,7 +24,7 @@ func skill_1(team, enemies, turn, meta):
 	var targets = get_foods_at_selected_area(0, enemies)
 	var target = self.get_random_player(targets)
 	
-	target.take_damage(calculate_inflicted_damage(30, target), skill_1_settings.target_direction)
+	target.take_damage(calculate_inflicted_damage(40, target), skill_1_settings.target_direction)
 	target.plus_damage_frame(3)
 	
 	play_single_skill_animation(target)

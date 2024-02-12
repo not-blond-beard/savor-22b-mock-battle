@@ -15,7 +15,7 @@ func _ready():
 	evasion = 0
 	critical_chance = 0
 	
-	skill_1_settings = SkillSettings.new("다음 시전되는 스킬 2의 공격력을 10 증가시킵니다.", 5, -1)
+	skill_1_settings = SkillSettings.new("다음 시전되는 스킬 2의 공격력을 30 증가시킵니다.", 5, -1)
 	skill_2_settings = SkillSettings.new("모든 상대에게 데미지 30을 줍니다.", 25, -1, 1)
 	
 	is_skill_effect_enable = false
@@ -28,7 +28,7 @@ func skill_1(team, enemies, turn, meta):
 	
 	is_skill_effect_enable = true
 	
-	self.add_buff_or_debuff(" 스킬 2 +10")
+	self.add_buff_or_debuff(" 스킬 2 +30")
 	
 		
 func skill_2(team, enemies, turn, meta):
@@ -40,9 +40,9 @@ func skill_2(team, enemies, turn, meta):
 	var damage: int = 30
 	
 	if is_skill_effect_enable:
-		damage += 10
+		damage += 30
 		is_skill_effect_enable = false
-		remove_buff(" 스킬 2 +10")
+		remove_buff(" 스킬 2 +30")
 	
 	for key in enemies:
 		var enemy: InstanceMap = enemies[key]
