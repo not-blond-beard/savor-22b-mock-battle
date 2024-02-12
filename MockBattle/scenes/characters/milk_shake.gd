@@ -3,7 +3,7 @@ extends "res://scenes/characters/player.gd"
 var is_skill_effect_enable: bool
 
 func _ready():
-	set_health(100)
+	set_health(70)
 	
 	food_name = "밀크쉐이크"
 	food_type = "단맛"

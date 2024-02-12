@@ -1,7 +1,7 @@
 extends "res://scenes/characters/player.gd"
 
 func _ready():
-	set_health(130)
+	set_health(50)
 	
 	food_name = "마라탕"
 	food_type = "매운맛"
@@ -24,7 +24,7 @@ func skill_1(team, enemies, turn, meta):
 	var targets = get_foods_at_selected_area(0, enemies)
 	
 	for enemy in targets:
-		enemy.take_damage(calculate_inflicted_damage(5, enemy.instance_node), skill_1_settings.target_direction)
+		enemy.take_damage(calculate_inflicted_damage(5, enemy), skill_1_settings.target_direction)
 		enemy.toggle_stun(true)
 		play_single_skill_animation(enemy)
 
@@ -37,5 +37,5 @@ func skill_2(team, enemies, turn, meta):
 	var targets = get_foods_at_selected_area(0, enemies)
 
 	for enemy in targets:
-		enemy.take_damage(calculate_inflicted_damage(60, enemy.instance_node), skill_2_settings.target_direction)
+		enemy.take_damage(calculate_inflicted_damage(60, enemy), skill_2_settings.target_direction)
 		play_single_skill_animation(enemy)
