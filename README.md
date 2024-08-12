@@ -514,3 +514,7 @@
 
 # 참고
 해당 문서는 내부 노션 문서를 그대로 Readme로 옮겼습니다. 
+
+사용한 asset은 다음과 같습니다.
+
+https://github.com/Jordyfel/duelyst-animated-sprites-godot
